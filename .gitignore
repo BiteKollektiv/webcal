@@ -16,4 +16,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
-config/initializers/secret_token.rb
+*.pdf
+
+# Ignore application configuration
+/config/application.yml

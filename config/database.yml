@@ -1,0 +1,24 @@
+# Sadly, ENV is not set by figaro during local testing.
+# Therefore, we have to specify a fallback.
+# (See https://github.com/laserlemon/figaro/issues/57 for info)
+postgresql: &postgresql
+  adapter: postgresql
+  database: <%= ENV['DB_NAME'] || "webcal_test" %>
+  username: <%= ENV['DB_USER'] || "tester" %>
+  password: <%= ENV['DB_PASSWORD'] || "tester" %>
+  min_messages: ERROR
+
+defaults: &defaults
+  pool: 5
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || "postgresql" %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
