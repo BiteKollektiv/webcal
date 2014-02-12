@@ -2,25 +2,30 @@ require 'spec_helper'
 
 describe Event do
   before :each do
-    @event = create(:event)
+    @event = build(:event)
   end
 
-  it { expect(@event).to respond_to(:title) }
-  it { expect(@event).to respond_to(:description) }
-  it { expect(@event).to respond_to(:location) }
-  it { expect(@event).to respond_to(:starts_at) }
-  it { expect(@event).to respond_to(:ends_at) }
-  it { expect(@event).to respond_to(:calendar) }
-  it { expect(@event).to respond_to(:created_at) }
-  it { expect(@event).to respond_to(:updated_at) }
+  # "respond_to" specs
+  it { should respond_to(:title) }
+  it { should respond_to(:description) }
+  it { should respond_to(:location) }
+  it { should respond_to(:starts_at) }
+  it { should respond_to(:ends_at) }
+  it { should respond_to(:calendar) }
+  it { should respond_to(:created_at) }
+  it { should respond_to(:updated_at) }
 
-  it "should be valid" do
-    pending "Need to add validations to event model"
-    # expect(@event).to be_valid
+  # "validate" specs
+  it { expect(@event).to be_valid }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:starts_at) }
+  it { should validate_presence_of(:ends_at) }
+  it { should belong_to(:calendar) }
+
+  it "should be invalid without a calendar" do
+    @event.calendar = nil
+    expect(@event).to be_invalid
   end
 
-  it "should be invalid without a start date"
-  it "should be invalid without an end date"
-  it "should be invalid without a calendar"
   it "should have a duration"
 end
