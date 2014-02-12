@@ -1,11 +1,10 @@
-# Sadly, ENV is not set by figaro during local testing.
-# Therefore, we have to specify a fallback.
-# (See https://github.com/laserlemon/figaro/issues/57 for info)
+# ENV is set in each of the .env files
+# ENV['DB'] is set in .travis.yml
 postgresql: &postgresql
   adapter: postgresql
-  database: <%= ENV['DB_NAME'] || "webcal_test" %>
-  username: <%= ENV['DB_USER'] || "tester" %>
-  password: <%= ENV['DB_PASSWORD'] || "tester" %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   min_messages: ERROR
 
 defaults: &defaults

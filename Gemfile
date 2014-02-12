@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby File.read(".ruby-version").strip.split("-").first
+gem 'dotenv-rails', :groups => [:development, :test] # needs to be at top
+
 gem 'rails', '4.0.2'
 
 # Database gems
@@ -30,7 +32,6 @@ group :test, :development do
 end
 
 group :development do
-  gem 'figaro'
   gem 'rails-erd'
   gem 'better_errors'
   gem 'binding_of_caller'
