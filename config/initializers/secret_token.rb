@@ -1,1 +1,1 @@
-Webcal::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || "5fc37f774682454bcdfa8ad50a6e7a2268cfaad556742bc6c665fb57fbd7680e666576404c6a5d3481961b5e7f78965ecc31280f74f8f1e3fc068bb4065d2ec3"
+Webcal::Application.config.secret_key_base = ENV['SECRET_TOKEN']
