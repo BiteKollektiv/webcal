@@ -1,28 +1,28 @@
-== README
+[![Build Status](https://travis-ci.org/BatchZero/webcal.png?branch=master)](https://travis-ci.org/BatchZero/webcal) [![Code Climate](https://codeclimate.com/github/BatchZero/webcal.png)](https://codeclimate.com/github/BatchZero/webcal)
+## The Webcalendar
+Anonymous Webcalendars as a service.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Contributing
 
-Things you may want to cover:
+Check out the [issues](https://github.com/carolinagc/webcalendar/issues) and see if there's something you want to work on.
+If you found something you want to fix, fork the repository and submit a pull request with your changes.
 
-* Ruby version
+### Setup the project locally
+**External dependencies:** GraphViz, Postgres
 
-* System dependencies
+In order to start the server or run the tests locally, you will need to create a postgres user called tester, with the same password. We will provide a rake task that does that for you in the near future.
 
-* Configuration
+    git clone git@github.com:<you>/webcalendar.git
+    bundle install
+    rails s
 
-* Database creation
+Running the tests
 
-* Database initialization
+    rake spec
+    
+Checking for missing translations
 
-* How to run the test suite
+    rake i18n:missing
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Questions?
+Just [create an issue](https://github.com/carolinagc/webcalendar/issues/new) tagged as a *question*.
