@@ -5,21 +5,33 @@ describe Calendar do
     @calendar = create(:calendar)
   end
 
-  it { expect(@calendar).to respond_to(:title) }
-  it { expect(@calendar).to respond_to(:description) }
-  it { expect(@calendar).to respond_to(:token_read) }
-  it { expect(@calendar).to respond_to(:token_write) }
-  it { expect(@calendar).to respond_to(:events) }
-  it { expect(@calendar).to respond_to(:created_at) }
-  it { expect(@calendar).to respond_to(:updated_at) }
+  # Using should here, because it reads easier
+  it { should respond_to(:title) }
+  it { should respond_to(:description) }
+  it { should respond_to(:token_read) }
+  it { should respond_to(:token_write) }
+  it { should respond_to(:events) }
+  it { should respond_to(:created_at) }
+  it { should respond_to(:updated_at) }
 
-  it "should be valid" do
-    pending "Need to add validations to calendar model"
-    # expect(@calendar).to be_valid
+  # Validation specs
+  it { expect(@calendar).to be_valid }
+  it { should validate_presence_of(:token_read) }
+  it { should validate_presence_of(:token_write) }
+  it { should validate_uniqueness_of(:token_read) }
+  it { should validate_uniqueness_of(:token_write) }
+  it { should have_many(:events) }
+
+  it "should be invalid without a read_token" do
+    @calendar.token_read = nil
+    expect(@calendar).to be_invalid
   end
 
-  it "should be invalid without a read_token"
-  it "should be invalid without a write token"
+  it "should be invalid without a write token" do
+    @calendar.token_write = nil
+    expect(@calendar).to be_invalid
+  end
+
   it "should return a list of events for this month"
   it "should return a list of events for this week"
   it "should return a list of events for today"

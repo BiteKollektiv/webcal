@@ -26,6 +26,7 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-debugger'
   gem 'i18n-tasks', '~> 0.2.10' # Gem for testing i18n
+  gem 'shoulda'
 end
 
 group :development do
