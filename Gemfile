@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby File.read(".ruby-version").strip.split("-").second
+ruby File.read(".ruby-version").strip.split("-").first
 gem 'rails', '4.0.2'
 
 # Database gems
