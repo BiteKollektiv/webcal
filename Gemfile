@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby File.read(".ruby-version").strip.split("-").second
 gem 'rails', '4.0.2'
 
 # Database gems
@@ -25,6 +25,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-debugger'
+  gem 'i18n-tasks', '~> 0.2.10' # Gem for testing i18n
 end
 
 group :development do
@@ -32,7 +33,6 @@ group :development do
   gem 'rails-erd'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'i18n-tasks', '~> 0.2.10' # Gem for testing i18n
 end
 
 # run bundle exec rake doc:rails to generate api doc at doc/api
