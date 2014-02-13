@@ -29,6 +29,7 @@ group :test, :development do
   gem 'pry-debugger'
   gem 'i18n-tasks', '~> 0.2.10' # Gem for testing i18n
   gem 'shoulda'
+  gem 'shoulda-callback-matchers', '>=0.3.0'
 end
 
 group :development do

@@ -1,5 +1,7 @@
 class Calendar < ActiveRecord::Base
-  validates :token_read, :token_write, presence: true
-  validates :token_read, :token_write, uniqueness: true
+  include Tokenable
+
+  validates :token_read, :token_write, presence: true, on: :create
+  validates :token_read, :token_write, uniqueness: true, on: :create
   has_many :events
 end
