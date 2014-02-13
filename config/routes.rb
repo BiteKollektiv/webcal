@@ -1,6 +1,10 @@
 Webcal::Application.routes.draw do
-  root "static_pages#index"
-  resources :calendars do
-    resources :events
+  get '/:locale' =>  "static_pages#index"
+  root to: "static_pages#index"
+  scope "/:locale", locale: /en|es|de/ do
+#  scope "/:locale" do
+    resources :calendars do
+      resources :events
+    end
   end
 end
