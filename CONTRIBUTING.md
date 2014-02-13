@@ -38,7 +38,7 @@ Next, open the .env files and replace the example values with the actual values.
 
 The last step is to rename the files:
 
-    mv .env.test.example .env.test
-    mv .env.development.example .env.development
+    cp .env.test.example .env.test
+    cp .env.development.example .env.development
 
 Now you should be able to start the server (`rails s`) and run the test suite (`rake spec`).
