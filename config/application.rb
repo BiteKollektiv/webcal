@@ -23,6 +23,8 @@ module Webcal
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     I18n.config.enforce_available_locales = true
     config.i18n.default_locale = :en
+    # Available locales should only be the ones we have translations for
+    config.i18n.available_locales = [:en, :es, :de]
 
     # Limit file generation from generators
     config.generators do |generate|
