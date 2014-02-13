@@ -5,7 +5,7 @@ describe Event do
     @event = build(:event)
   end
 
-  # "respond_to" specs
+  # "respond_to" attr specs
   it { should respond_to(:title) }
   it { should respond_to(:description) }
   it { should respond_to(:location) }
@@ -14,6 +14,9 @@ describe Event do
   it { should respond_to(:calendar) }
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
+
+  # "respond_to" method specs
+  it { should respond_to(:duration) }
 
   # "validate" specs
   it { expect(@event).to be_valid }
@@ -27,5 +30,12 @@ describe Event do
     expect(@event).to be_invalid
   end
 
-  it "should have a duration"
+  it "should have a duration" do
+    expected_duration = 4*60*60
+
+    @event.starts_at = DateTime.new(2011, 1, 1, 10, 0, 0)
+    @event.ends_at   = DateTime.new(2011, 1, 1, 14, 0, 0)
+
+    expect(@event.duration).to eq expected_duration
+  end
 end

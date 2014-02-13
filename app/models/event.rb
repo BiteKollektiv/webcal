@@ -4,4 +4,8 @@ class Event < ActiveRecord::Base
   validates :starts_at, presence: true
   validates :ends_at,   presence: true
   validates_presence_of :calendar
+
+  def duration
+    ends_at - starts_at
+  end
 end
