@@ -34,3 +34,13 @@ Webcal::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 end
+
+class ActionController::TestCase
+  module Behavior
+    def process_with_default_locale(action, http_method = 'GET', parameters = nil, session = nil, flash = nil)
+      parameters = { :locale => I18n.locale }.merge( parameters || {} ) unless I18n.locale.nil?
+      process_without_default_locale(action, http_method, parameters, session, flash)
+    end
+    alias_method_chain :process, :default_locale
+  end
+end

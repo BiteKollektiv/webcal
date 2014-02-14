@@ -3,7 +3,7 @@ module Tokenable
   extend ActiveSupport::Concern
 
   included do
-    before_validation :generate_read_token, :generate_write_token
+    before_validation :generate_read_token, :generate_write_token, on: :create
   end
 
   protected

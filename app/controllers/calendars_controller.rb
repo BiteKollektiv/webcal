@@ -4,8 +4,9 @@ class CalendarsController < ApplicationController
   def show
     if @calendar
       @events = @calendar.events
+      flash.now[:notice] = "changeable: #{@calendar.changeable?}"
     else
-      redirect_to new_calendar_path, notice: t('calendar.notfound')
+      redirect_to root_path, notice: t('calendar.notfound')
     end
   end
 
@@ -42,7 +43,7 @@ class CalendarsController < ApplicationController
     private
 
     def set_calendar
-      @calendar = Calendar.find_by(token_write: params[:token])
+      @calendar = Calendar.find_by_token(params[:token])
     end
 
     def calendar_params

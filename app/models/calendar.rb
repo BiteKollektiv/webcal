@@ -5,6 +5,9 @@ class Calendar < ActiveRecord::Base
   validates :token_read, :token_write, uniqueness: true, on: :create
   has_many :events
 
+  attr_accessor :changeable
+  alias :changeable? :changeable
+
   def month
     month_start = Time.zone.now.beginning_of_month.beginning_of_week
     month_end = Time.zone.now.end_of_month.end_of_week
@@ -24,6 +27,15 @@ class Calendar < ActiveRecord::Base
     day_end = Time.zone.now.end_of_day
 
     events_between(day_start, day_end)
+  end
+
+  def self.find_by_token(token)
+    if calendar = Calendar.find_by(token_write: token)
+      calendar.changeable = true
+    elsif calendar = Calendar.find_by(token_read: token)
+      calendar.changeable = false
+    end
+    calendar
   end
 
     protected
