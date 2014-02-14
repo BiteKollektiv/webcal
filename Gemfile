@@ -19,6 +19,8 @@ gem 'turbolinks' # Faster links
 
 gem 'rails-i18n', '~> 4.0.0' # import standard translations
 
+gem 'timecop'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara', '1.1.4'
