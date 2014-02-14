@@ -14,6 +14,11 @@ Since everyone of us is using Linux, we only have instructions for (Ubuntu) Linu
 
     sudo apt-get install postgresql postgresql-contrib graphviz
 
+#### Clone & bundle
+
+    git clone git@github.com:BatchZero/webcal.git && cd webcal
+    bundle install
+
 #### Create a postgres user
 
     sudo -u postgres createuser --superuser tester
@@ -23,22 +28,23 @@ Since everyone of us is using Linux, we only have instructions for (Ubuntu) Linu
     Enter it again: tester
     \q
 
-In this example we created a postgres user called tester, with the same password, feel free to choose anything you want.
+In this example we created a postgres user called tester, with the same password. Feel free to choose anything you want.
 
 #### Setting up the .env files
 
 First, you will need to generate a secret token with `rake secret`.
 
-Next, open the .env files and replace the example values with the actual values. Here's an example for `.env.test` with the user from above:
+Next, make a copy of the provided .env files:
+
+    cp .env.test{.example,}
+    cp .env.development{.example,}
+
+Now open the .env files and replace the example values with the actual values. Here's an example for `.env.test` with the user from above:
 
     SECRET_TOKEN=229e0685eb7d82503ba9e4db71de77118e28e0bc6e407511fc74883cae9f239....
     DB_NAME=webcal_test
     DB_USER=tester
     DB_PASSWORD=tester
 
-The last step is to rename the files:
-
-    cp .env.test.example .env.test
-    cp .env.development.example .env.development
 
 Now you should be able to start the server (`rails s`) and run the test suite (`rake spec`).
