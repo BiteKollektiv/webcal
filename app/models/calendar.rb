@@ -6,18 +6,30 @@ class Calendar < ActiveRecord::Base
   has_many :events
 
   def month
-    month_start = DateTime.now.beginning_of_month.beginning_of_week
-    month_end = DateTime.now.end_of_month.end_of_week
+    month_start = Time.zone.now.beginning_of_month.beginning_of_week
+    month_end = Time.zone.now.end_of_month.end_of_week
 
-    events.where('starts_at >= ?', month_start).
-      where('starts_at <= ?', month_end)
+    events_between(month_start, month_end)
+  end
+
+  def week
+    week_start = Time.zone.now.beginning_of_week
+    week_end = Time.zone.now.end_of_week
+
+    events_between(week_start, week_end)
   end
 
   def today
-    day_start = DateTime.now.beginning_of_day
-    day_end = DateTime.now.end_of_day
+    day_start = Time.zone.now.beginning_of_day
+    day_end = Time.zone.now.end_of_day
 
-    events.where('starts_at >= ?', day_start).
-      where('starts_at <= ?', day_end)
+    events_between(day_start, day_end)
   end
+
+    protected
+
+    def events_between(range_start, range_end)
+      events.where('starts_at >= ?', range_start).
+        where('starts_at <= ?', range_end)
+    end
 end
