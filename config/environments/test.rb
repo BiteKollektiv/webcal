@@ -35,6 +35,8 @@ Webcal::Application.configure do
   config.active_support.deprecation = :stderr
 end
 
+# Set default locale for controller tests
+# From: http://stackoverflow.com/a/19079076/3298908
 class ActionController::TestCase
   module Behavior
     def process_with_default_locale(action, http_method = 'GET', parameters = nil, session = nil, flash = nil)
