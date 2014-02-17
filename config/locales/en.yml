@@ -10,6 +10,10 @@ en:
 #    delete: Delete
   calendar:
     create: Create calendar
+    notfound: No calendar found
+    created: Calendar was successfully created
+    updated: Calendar was successfully updated
+    destroyed: Calendar was successfully removed
 #  events:
 #    start_at: Start at
 #    end_at: End at

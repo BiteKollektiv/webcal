@@ -19,18 +19,42 @@ describe Calendar do
   it { should respond_to(:token_read) }
   it { should respond_to(:token_write) }
   it { should respond_to(:events) }
+  it { should respond_to(:month) }
+  it { should respond_to(:week) }
+  it { should respond_to(:today) }
+  it { should respond_to(:changeable?) }
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
+  it { Calendar.should respond_to(:find_by_token) }
 
   # Validation specs
-  it { should callback(:generate_read_token).before(:validation) }
-  it { should callback(:generate_write_token).before(:validation) }
+  it { should_not callback(:generate_read_token).before(:validation).on(:update) }
+  it { should_not callback(:generate_write_token).before(:validation).on(:update) }
+
+  it { should callback(:generate_read_token).before(:validation).on(:create) }
+  it { should callback(:generate_write_token).before(:validation).on(:create) }
   it { should have_many(:events) }
 
   it "sets the read and write tokens" do
     @calendar = create(:calendar)
     expect(@calendar.token_read).not_to be_nil
     expect(@calendar.token_write).not_to be_nil
+  end
+
+  describe ".find_by_token" do
+    before :each do
+      @calendar = create(:calendar)
+    end
+
+    it "sets changeable? to false, if token_read is found" do
+      calendar = Calendar.find_by_token(@calendar.token_read)
+      expect(calendar.changeable?).to be_false
+    end
+
+    it "sets changeable? to true, if token_write is found" do
+      calendar = Calendar.find_by_token(@calendar.token_write)
+      expect(calendar.changeable?).to be_true
+    end
   end
 
   describe "#month" do

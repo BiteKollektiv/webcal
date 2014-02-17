@@ -2,7 +2,12 @@ class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
 
   def show
-    @events = @calendar.events
+    if @calendar
+      @events = @calendar.events
+      flash.now[:notice] = "changeable: #{@calendar.changeable?}"
+    else
+      redirect_to root_path, notice: t('calendar.notfound')
+    end
   end
 
   def new
@@ -13,7 +18,7 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.new(calendar_params)
 
     if @calendar.save
-      redirect_to @calendar, notice: 'Calendar was successfully created'
+      redirect_to @calendar, notice: t('calendar.created')
     else
       render action: 'new'
     end
@@ -24,7 +29,7 @@ class CalendarsController < ApplicationController
 
   def update
     if @calendar.update(calendar_params)
-      redirect_to @calendar, notice: 'Calendar was successfully updated'
+      redirect_to @calendar, notice: t('calendar.updated')
     else
       render action: 'edit'
     end
@@ -32,13 +37,13 @@ class CalendarsController < ApplicationController
 
   def destroy
     @calendar.destroy
-    redirect_to calendars_url, notice: 'Calendar was successfully removed'
+    redirect_to new_calendar_path, notice: t('calendar.destroyed')
   end
 
     private
 
     def set_calendar
-      @calendar = Calendar.find_by_token(params[:write_token])
+      @calendar = Calendar.find_by_token(params[:token])
     end
 
     def calendar_params
