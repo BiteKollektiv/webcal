@@ -1,9 +1,27 @@
 <h1>Calendars#show</h1>
-<p>Calendar successfully created</p>
- <h2>Title =><%= @calendar.title %></h2>
- <h2> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></h2>
-<h2> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></h2>
+<h2>Title =><%= @calendar.title %></h2>
 
 <% if @calendar.writable %>
 <%= link_to 'Edit', @root %>
 <% end %>
+
+<div id="calendar-nav">
+  <%= link_to t('calendar.today'), type: :today %>
+  <%= link_to t('calendar.week'), type: :week %>
+  <%= link_to t('calendar.month'), type: :month %>
+</div>
+
+<%= calendar(@type) do |date| %>
+  <%= date.day %>
+  <% if @calendar.events_by_date(date) %>
+    <ul>
+     <% @calendar.events_by_date(date).each do |event| %>
+        <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title %></li>
+          <p><%= event.description %></p>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
+<p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>

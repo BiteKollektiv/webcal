@@ -139,4 +139,25 @@ describe Calendar do
       expect(@calendar.today).not_to include(@event_after)
     end
   end
+
+  describe "#events_by_date" do
+    it "should return events only for the specified date" do
+      @event_before = create(:event,
+                                starts_at: 2.days.ago,
+                                ends_at: 1.day.ago,
+                                calendar: @calendar)
+      @event_inside = create(:event,
+                             starts_at: Time.zone.now.beginning_of_day,
+                             ends_at: Time.zone.now.beginning_of_day + 4.minutes,
+                           calendar: @calendar)
+      @event_after = create(:event,
+                            starts_at: Time.zone.now.tomorrow,
+                            ends_at: Time.zone.now.tomorrow + 5.minutes,
+                              calendar: @calendar)
+
+      expect(@calendar.today).to include(@event_inside)
+      expect(@calendar.today).not_to include(@event_before)
+      expect(@calendar.today).not_to include(@event_after)
+    end
+  end
 end

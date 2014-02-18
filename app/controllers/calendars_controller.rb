@@ -9,7 +9,11 @@ class CalendarsController < ApplicationController
       @calendar = Calendar.where(token_write: params[:id]).first
       @calendar.writable=true
     end
-    @events = @calendar.events 
+
+    @events = @calendar.events
+    @type = params[:type].to_sym if params[:type]
+    @date = params[:date] if params[:date]
+    flash.now[:notice] = "changeable: #{@calendar.changeable?}"
   end
 
   def new
@@ -40,15 +44,15 @@ class CalendarsController < ApplicationController
     @calendar.destroy
     redirect_to new_calendar_path, notice: t('calendar.destroyed')
   end
-  
+
   private
 
     def set_calendar
 
       @calendar = Calendar.find_by(token_write: params[:id])
     end
-    
+
     def calendar_params
-      params.require(:calendar).permit(:title, :description, :token_read, :token_write)
+      params.require(:calendar).permit(:title, :description, :token_read, :token_write, :type, :date)
     end
 end

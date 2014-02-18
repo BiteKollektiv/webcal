@@ -14,6 +14,17 @@ en:
     created: Calendar was successfully created
     updated: Calendar was successfully updated
     destroyed: Calendar was successfully removed
+    today: Today
+    week: Week
+    month: Month
+    weekdays:
+      monday: Monday
+      tuesday: Tuesday
+      wednesday: Wednesday
+      thursday: Thursday
+      friday: Friday
+      saturday: Saturday
+      sunday: Sunday
 #  events:
 #    start_at: Start at
 #    end_at: End at

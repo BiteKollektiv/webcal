@@ -22,12 +22,19 @@ class Calendar < ActiveRecord::Base
   def week
     week_start = Time.zone.now.beginning_of_week
     week_end = Time.zone.now.end_of_week
-    
+
     events_between(week_start, week_end)
   end
   def today
     day_start = Time.zone.now.beginning_of_day
     day_end = Time.zone.now.end_of_day
+
+    events_between(day_start, day_end)
+  end
+
+  def events_by_date(date)
+    day_start = date.beginning_of_day
+    day_end = date.end_of_day
 
     events_between(day_start, day_end)
   end
