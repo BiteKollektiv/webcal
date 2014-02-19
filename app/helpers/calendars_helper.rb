@@ -6,6 +6,7 @@ module CalendarsHelper
 
   def direction_link_params(direction)
     token = @calendar.changeable? ? @calendar.token_write : @calendar.token_read
+    date = @date
     if direction == :back
       date = @date.prev_day if @type == :day
       date = @date.prev_week.beginning_of_week if @type == :week
@@ -43,11 +44,12 @@ module CalendarsHelper
 
     def view_type(type)
       case type
-      when :month
-        header + month
+      when :day
+        today
       when :week
         header + week
-      else today
+      else
+        header + month
       end
     end
 
