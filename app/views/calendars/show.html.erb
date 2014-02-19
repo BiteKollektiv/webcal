@@ -6,12 +6,14 @@
 <% end %>
 
 <div id="calendar-nav">
-  <%= link_to t('calendar.today'), type: :today %>
-  <%= link_to t('calendar.week'), type: :week %>
-  <%= link_to t('calendar.month'), type: :month %>
+  <%= link_to "<", direction_link_params(:back) %>
+  <%= link_to ">", direction_link_params(:forward) %>
+  <%= link_to t('calendar.day'), type_link_params(:day) %>
+  <%= link_to t('calendar.week'), type_link_params(:week) %>
+  <%= link_to t('calendar.month'), type_link_params(:month) %>
 </div>
 
-<%= calendar(@type) do |date| %>
+<%= calendar(@type, @date) do |date| %>
   <%= date.day %>
   <% if @calendar.events_by_date(date) %>
     <ul>

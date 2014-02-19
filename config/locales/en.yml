@@ -14,7 +14,7 @@ en:
     created: Calendar was successfully created
     updated: Calendar was successfully updated
     destroyed: Calendar was successfully removed
-    today: Today
+    day: Day
     week: Week
     month: Month
     weekdays:

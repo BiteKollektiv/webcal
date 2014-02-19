@@ -1,7 +1,27 @@
 module CalendarsHelper
 
-  def calendar(type = :month, date = Date.today, &block)
+  def calendar(type = :month, date = Time.zone.today, &block)
     CalendarTable.new(self, type, date, block).table
+  end
+
+  def direction_link_params(direction)
+    token = @calendar.changeable? ? @calendar.token_write : @calendar.token_read
+    if direction == :back
+      date = @date.prev_day if @type == :day
+      date = @date.prev_week.beginning_of_week if @type == :week
+      date = @date.prev_month.beginning_of_month if @type == :month
+    elsif direction == :forward
+      date = @date.next_day if @type == :day
+      date = @date.next_week.beginning_of_week if @type == :week
+      date = @date.next_month.beginning_of_month if @type == :month
+    end
+
+    {controller: "calendars", action: "show", token: token,
+     date: date.strftime("%Y-%m-%d"), type: @type}
+  end
+
+  def type_link_params(type)
+    {date: @date, type: type}
   end
 
   class CalendarTable < Struct.new(:view, :type, :date, :callback)
