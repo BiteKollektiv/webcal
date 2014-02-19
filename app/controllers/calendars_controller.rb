@@ -15,8 +15,7 @@ class CalendarsController < ApplicationController
   end
 
   def create
-    @calendar = Calendar.new(calendar_params)
-
+   @calendar = Calendar.new(calendar_params)
     if @calendar.save
       redirect_to @calendar, notice: t('calendar.created')
     else
@@ -43,10 +42,16 @@ class CalendarsController < ApplicationController
     private
 
     def set_calendar
+<<<<<<< HEAD
       @calendar = Calendar.find_by_token(params[:token])
     end
+=======
+#      @calendar = Calendar.find_by_token(params[:write_token])
+      @calendar = Calendar.where("token_write = params[:token_write]")
+  end
+>>>>>>> Add create calendar form in homepage
 
     def calendar_params
-      params.require(:calendar).permit(:title, :description)
+      params.require(:calendar).permit(:title, :description, :token_read, :token_write)
     end
 end
