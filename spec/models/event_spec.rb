@@ -27,6 +27,10 @@ describe Event do
   it { should validate_presence_of(:ends_at) }
   it { should belong_to(:calendar) }
 
+  # relation specs
+  it { should have_many(:tags) }
+
+
   it "should be invalid without a calendar" do
     @event.calendar = nil
     expect(@event).to be_invalid
