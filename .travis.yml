@@ -14,13 +14,6 @@ before_script:
 - RAILS_ENV=test bundle exec rake db:migrate
 script:
 - bundle exec rspec spec/
-after_success:
-- gem install heroku
-- git remote add heroku $HEROKU_GIT_URL
-- echo "Host heroku.com" >> ~/.ssh/config
-- echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-- echo "   CheckHostIP no" >> ~/.ssh/config
-- echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-- heroku keys:clear
-- yes | heroku keys:add
-- yes | git push heroku master
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
