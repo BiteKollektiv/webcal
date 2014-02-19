@@ -24,7 +24,6 @@ class CalendarsController < ApplicationController
     else
       render action: 'new'
     end
-debugger
   end
 
   def edit
