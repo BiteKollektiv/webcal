@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212135606) do
+ActiveRecord::Schema.define(version: 20140219104756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,5 +37,27 @@ ActiveRecord::Schema.define(version: 20140212135606) do
   end
 
   add_index "events", ["calendar_id"], name: "index_events_on_calendar_id", using: :btree
+
+  create_table "gutentag_taggings", force: true do |t|
+    t.integer  "tag_id",        null: false
+    t.integer  "taggable_id",   null: false
+    t.string   "taggable_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gutentag_taggings", ["tag_id"], name: "index_gutentag_taggings_on_tag_id", using: :btree
+  add_index "gutentag_taggings", ["taggable_type", "taggable_id", "tag_id"], name: "unique_taggings", unique: true, using: :btree
+  add_index "gutentag_taggings", ["taggable_type", "taggable_id"], name: "index_gutentag_taggings_on_taggable_type_and_taggable_id", using: :btree
+
+  create_table "gutentag_tags", force: true do |t|
+    t.string   "name",                       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "taggings_count", default: 0, null: false
+  end
+
+  add_index "gutentag_tags", ["name"], name: "index_gutentag_tags_on_name", unique: true, using: :btree
+  add_index "gutentag_tags", ["taggings_count"], name: "index_gutentag_tags_on_taggings_count", using: :btree
 
 end

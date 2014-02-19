@@ -21,6 +21,8 @@ gem 'rails-i18n', '~> 4.0.0' # import standard translations
 
 gem 'timecop'
 
+gem 'gutentag' # easy, simple tags for events
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara', '1.1.4'
