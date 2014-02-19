@@ -43,10 +43,13 @@ class CalendarsController < ApplicationController
 
     def set_calendar
 <<<<<<< HEAD
+<<<<<<< HEAD
       @calendar = Calendar.find_by_token(params[:token])
     end
 =======
 #      @calendar = Calendar.find_by_token(params[:write_token])
+=======
+>>>>>>> Add to_param method in calendar model, to have token in url, changed controller & views to work with token as id
       @calendar = Calendar.where("token_write = params[:token_write]")
   end
 >>>>>>> Add create calendar form in homepage

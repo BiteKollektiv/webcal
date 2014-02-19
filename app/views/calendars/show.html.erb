@@ -1,3 +1,4 @@
 <h1>Calendars#show</h1>
-<h2>Title =><%= @calendar.title %></h2>
-<h2> URL => <%= @calendar.token_read %></h2>
+<h2>Title =><%= @calendar[0].title %></h2>
+<h2> Share your calendar => <a href="<%= @calendar[0].token_read %>">this url</a></h2>
+<h2> To create or modify events in your Calendar  => <a href="<%= @calendar[0].token_write %>">this url </a></h2>

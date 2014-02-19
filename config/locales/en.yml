@@ -1,14 +1,14 @@
 en:
   footer:
     contact: Contact
-#  shared:
-#    title: Title
+  shared:
 #    description: Description
 #    new: New
 #    edit: Edit
 #    update: Update
 #    delete: Delete
   calendar:
+    title: Calendar title
     create: Create calendar
     notfound: No calendar found
     created: Calendar was successfully created

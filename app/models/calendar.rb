@@ -5,6 +5,7 @@ class Calendar < ActiveRecord::Base
   validates :token_read, :token_write, uniqueness: true, on: :create
   has_many :events
 
+
   attr_accessor :changeable
   alias :changeable? :changeable
 
@@ -20,6 +21,9 @@ class Calendar < ActiveRecord::Base
     week_end = Time.zone.now.end_of_week
 
     events_between(week_start, week_end)
+
+  def to_param  # overridden
+    token_read
   end
 
   def today

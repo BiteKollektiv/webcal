@@ -1,2 +1,9 @@
-<h1>Calendars#new</h1>
-<p>Find me in app/views/calendars/new.html.erb</p>
+<h1><%= t 'calendar.create' %></h1>
+<p>Find me in app/views/static_pages/index.html.erb</p>
+<div >
+  <%= form_for @calendar do |f| %>
+    <%= f.label t(:name) %>
+    <%= f.text_field :name, :placeholder => @calendar.read_token, :autofocus => true %>
+    <%= f.submit t('calendar.create') %> <br/>
+  <% end %>
+  </div>
