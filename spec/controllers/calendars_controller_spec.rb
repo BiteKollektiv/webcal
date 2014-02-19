@@ -7,14 +7,14 @@ describe CalendarsController do
   describe "GET show" do
     it "assigns the requested calendar as @calendar" do
       calendar = Calendar.create! valid_attributes
-      get :show, {token: calendar.token_read}
+      get :show, id: calendar.token_read
       expect(assigns(:calendar)).to eq(calendar)
     end
 
     it "assigns the related events as @events" do
       calendar = Calendar.create! valid_attributes
       FactoryGirl.create(:event, calendar: calendar)
-      get :show, {token: calendar.token_read}
+      get :show, id: calendar.token_read
       expect([assigns(:events)]).to include(calendar.events)
     end
   end
@@ -29,7 +29,7 @@ describe CalendarsController do
   describe "GET edit" do
     it "assigns the requested calendar as @calendar" do
       calendar = Calendar.create! valid_attributes
-      get :edit, {token: calendar.token_read}
+      get :edit, id: calendar.token_write
       expect(assigns(:calendar)).to eq(calendar)
     end
   end

@@ -17,7 +17,6 @@ class CalendarsController < ApplicationController
   end
 
   def create
-
    @calendar = Calendar.new(calendar_params)
     if @calendar.save
       redirect_to @calendar, notice: t('calendar.created')
@@ -41,22 +40,13 @@ class CalendarsController < ApplicationController
     @calendar.destroy
     redirect_to new_calendar_path, notice: t('calendar.destroyed')
   end
-
-    private
+  
+  private
 
     def set_calendar
-<<<<<<< HEAD
-<<<<<<< HEAD
-      @calendar = Calendar.find_by_token(params[:token])
-    end
-=======
-#      @calendar = Calendar.find_by_token(params[:write_token])
-=======
->>>>>>> Add to_param method in calendar model, to have token in url, changed controller & views to work with token as id
       @calendar = Calendar.where("token_write = params[:token_write]")
-  end
->>>>>>> Add create calendar form in homepage
-
+    end
+    
     def calendar_params
       params.require(:calendar).permit(:title, :description, :token_read, :token_write)
     end

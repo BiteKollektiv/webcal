@@ -1,7 +1,7 @@
 en:
   footer:
     contact: Contact
-  shared:
+#  shared:
 #    description: Description
 #    new: New
 #    edit: Edit
@@ -10,7 +10,7 @@ en:
   calendar:
     title: Calendar title
     create: Create calendar
-    notfound: No calendar found
+#    notfound: No calendar found
     created: Calendar was successfully created
     updated: Calendar was successfully updated
     destroyed: Calendar was successfully removed

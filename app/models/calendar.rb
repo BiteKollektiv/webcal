@@ -5,10 +5,12 @@ class Calendar < ActiveRecord::Base
   has_many :events
   attr_accessor :writable
   alias :writable? :writable
-
-
   attr_accessor :changeable
   alias :changeable? :changeable
+
+  def to_param  # overridden
+    token_read
+  end
 
   def month
     month_start = Time.zone.now.beginning_of_month.beginning_of_week
@@ -20,26 +22,14 @@ class Calendar < ActiveRecord::Base
   def week
     week_start = Time.zone.now.beginning_of_week
     week_end = Time.zone.now.end_of_week
-
+    
     events_between(week_start, week_end)
-
-  def to_param  # overridden
-    token_read
   end
   def today
     day_start = Time.zone.now.beginning_of_day
     day_end = Time.zone.now.end_of_day
 
     events_between(day_start, day_end)
-  end
-
-  def self.find_by_token(token)
-    if calendar = Calendar.find_by(token_write: token)
-      calendar.changeable = true
-    elsif calendar = Calendar.find_by(token_read: token)
-      calendar.changeable = false
-    end
-    calendar
   end
 
     protected

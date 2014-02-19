@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-    def index
+  def index
     @calendar=Calendar.new 
   end
 end
+

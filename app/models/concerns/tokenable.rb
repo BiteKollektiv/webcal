@@ -16,20 +16,6 @@ module Tokenable
       self.token_read = token_write[0..12]
   end
 
-
-#  def generate_read_token
-#    self.token_read = loop do
-#      random_token = SecureRandom.urlsafe_base64(nil, false)
-#      break random_token unless self.class.exists?(token_read: random_token)
-#    end
-#  end
-
-  def generate_write_token
-    self.token_write = loop do
-      break random_token unless token_exists?(random_token)
-    end
-  end
-
   def token_exists?(token)
     self.class.exists?(token_read: token) && self.class.exists?(token_write: token)
   end
