@@ -26,9 +26,6 @@ class Calendar < ActiveRecord::Base
   def to_param  # overridden
     token_read
   end
-
-
-
   def today
     day_start = Time.zone.now.beginning_of_day
     day_end = Time.zone.now.end_of_day

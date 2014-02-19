@@ -28,11 +28,7 @@ describe Calendar do
   it { Calendar.should respond_to(:find_by_token) }
 
   # Validation specs
-  it { should_not callback(:generate_read_token).before(:validation).on(:update) }
-  it { should_not callback(:generate_write_token).before(:validation).on(:update) }
-
-  it { should callback(:generate_read_token).before(:validation).on(:create) }
-  it { should callback(:generate_write_token).before(:validation).on(:create) }
+  it { should callback(:generate_token).before(:validation) }
   it { should have_many(:events) }
 
   it "sets the read and write tokens" do
@@ -138,6 +134,13 @@ describe Calendar do
       @event_after = create(:event,
                                starts_at: DateTime.tomorrow,
                                ends_at: DateTime.tomorrow + 5.minutes,
+
+  it "should return a list of events for this month"
+  it "should return a list of events for this week"
+  it "should return a list of events for today" do
+    @event_yesterday = create(:event,
+                              starts_at: 2.days.ago,
+                              ends_at: 1.day.ago,
                               calendar: @calendar)
 
       expect(@calendar.today).to include(@event_inside)
