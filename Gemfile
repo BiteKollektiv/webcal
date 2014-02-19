@@ -25,7 +25,7 @@ gem 'gutentag' # easy, simple tags for events
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '~> 2.1'
   gem 'guard-rspec', require: false
   gem 'factory_girl'
   gem 'database_cleaner'
