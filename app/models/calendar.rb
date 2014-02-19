@@ -1,9 +1,10 @@
 class Calendar < ActiveRecord::Base
   include Tokenable
-
   validates :token_read, :token_write, presence: true, on: :create
   validates :token_read, :token_write, uniqueness: true, on: :create
   has_many :events
+  attr_accessor :writable
+  alias :writable? :writable
 
 
   attr_accessor :changeable
@@ -25,6 +26,8 @@ class Calendar < ActiveRecord::Base
   def to_param  # overridden
     token_read
   end
+
+
 
   def today
     day_start = Time.zone.now.beginning_of_day

@@ -2,12 +2,14 @@ class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
 
   def show
-    if @calendar
-      @events = @calendar.events
-      flash.now[:notice] = "changeable: #{@calendar.changeable?}"
+    if params[:id].size == 13
+      @calendar = Calendar.where(token_read: params[:id]).first
+      @calendar.writable=false
     else
-      redirect_to root_path, notice: t('calendar.notfound')
+      @calendar = Calendar.where(token_write: params[:id]).first
+      @calendar.writable=true
     end
+    @events = @calendar.events 
   end
 
   def new
@@ -15,12 +17,14 @@ class CalendarsController < ApplicationController
   end
 
   def create
+
    @calendar = Calendar.new(calendar_params)
     if @calendar.save
       redirect_to @calendar, notice: t('calendar.created')
     else
       render action: 'new'
     end
+debugger
   end
 
   def edit
