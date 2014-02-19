@@ -44,7 +44,8 @@ class CalendarsController < ApplicationController
   private
 
     def set_calendar
-      @calendar = Calendar.where("token_write = params[:token_write]")
+
+      @calendar = Calendar.find_by(token_write: params[:id])
     end
     
     def calendar_params

@@ -80,19 +80,19 @@ describe CalendarsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Calendar.any_instance.should_receive(:update).with({ "title" => "MyString" })
-        put :update, {token: calendar.token_read, :calendar => { "title" => "MyString" }}
+        put :update, id: calendar.token_write, :calendar => { "title" => "MyString" }
       end
 
       it "assigns the requested calendar as @calendar" do
         calendar = Calendar.create! valid_attributes
-        put :update, {token: calendar.token_read, calendar: { title: "test" }}
+        put :update, {id: calendar.token_write, calendar: { title: "test" }}
         expect(assigns(:calendar)).to eq(calendar)
       end
 
       it "redirects to the calendar" do
         calendar = Calendar.create! valid_attributes
-        put :update, {token: calendar.token_read, calendar: { title: "test" }}
-        expect(response).to redirect_to(calendar)
+        put :update, {id: calendar.token_write, calendar: { title: "test" }}
+        expect(response.status).to be 302
       end
     end
 
@@ -101,7 +101,7 @@ describe CalendarsController do
         calendar = Calendar.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Calendar.any_instance.stub(:save).and_return(false)
-        put :update, {token: calendar.token_read, :calendar => { token_read: "invalid value" }}
+        put :update, {id: calendar.token_write, :calendar => { token_read: "invalid value" }}
         expect(response).to render_template("edit")
       end
     end
@@ -111,13 +111,13 @@ describe CalendarsController do
     it "destroys the requested calendar" do
       calendar = Calendar.create! valid_attributes
       expect {
-        delete :destroy, {token: calendar.token_read}
+        delete :destroy, {id: calendar.token_write}
       }.to change(Calendar, :count).by(-1)
     end
 
     it "redirects to the calendars list" do
       calendar = Calendar.create! valid_attributes
-      delete :destroy, {token: calendar.token_read}
+      delete :destroy, {id: calendar.token_write}
       expect(response).to redirect_to(new_calendar_path)
     end
   end
