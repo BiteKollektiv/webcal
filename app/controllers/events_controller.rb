@@ -1,6 +1,16 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.all
+    @events = Calendar.find_by(params[:token_read]).events
+    @calendar = Calendar.find_by(params[:token_read])
+    if params[:calendar_id].size == 13
+      @calendar.writable = false
+    else
+      @calendar.writable = true
+    end
+  end
+  
+  def show
+    @event = Calendar.find_by(params[:token_read]).events.find(params[:id])
   end
 
   def new
@@ -33,7 +43,7 @@ class EventsController < ApplicationController
     end
 
     private
-    
+  
     def event_params
       params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
     end

@@ -29,7 +29,7 @@ describe EventsController do
   end
 
   describe "DELETE an event" do
-    it "checks the deletion of an event" do
+    it "checks the delete route" do
       calendar = Calendar.create! valid_calendar_attributes
       calendar_id = calendar.token_read
       assert_recognizes({ controller: 'events', action: 'destroy', calendar_id: calendar_id, locale: 'en', id: '1'}, {path:"/en/calendars/#{calendar_id}/events/1", method: :delete})
