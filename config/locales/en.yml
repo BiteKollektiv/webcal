@@ -36,6 +36,8 @@ en:
 #  success_messages:
 #    calendar:
 #    events:
+  index: 
+    welcome: "Enter a name for a new Calendar, and get started!"
 
 
 

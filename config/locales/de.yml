@@ -36,3 +36,5 @@ de:
 #  success_messages:
 #    calendar:
 #    events:
+  index:
+    welcome: "Gib deinem Kalender einen Namen, und leg' los!"
