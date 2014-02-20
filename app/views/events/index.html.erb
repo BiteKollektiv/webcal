@@ -1,0 +1,37 @@
+<h1> t('events.list') </h1>
+
+<table id="events_table">
+  <thead>
+    <tr>
+      <th><%= t('events.title') %></th>
+      <th><%= t('events.description') %></th>
+      <th><%= t('events.start_date') %></th>
+      <th><%= t('events.end_date') %></th>
+      <th><%= t('events.location') %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @events.each do |event| %>
+<tr>
+   <td><%= event.title %></td>
+   <td><%= event.description %></td>
+   <td><%= event.starts_at.to_formatted_s(:short) %> </td>
+   <td><%= event.ends_at.to_formatted_s(:short) %> </td>
+   <% if event.location.present? %>
+     <td><%=link_to event.location.name, event.location %></td>
+   <% else %>
+    <td><%= t :pending %></td>
+  <% end %>
+
+   <td> <%= link_to t('shared.show'), calendar_event_path(@calendar, event) %></td>
+   <% if @calendar.writable? %>
+     <td> <%= link_to t('shared.edit') , edit_calendar_event_path(@calendar, event) %></td>
+     <td> <%= link_to t('shared.delete'), calendar_event_path(@calendar, event), method: :delete,  data: { confirm: 'Are you sure?' }  %></td>
+     <% end %>
+</tr>
+<% end %>
+  </tbody>
+</table>
