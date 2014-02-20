@@ -1,0 +1,37 @@
+de:
+  footer:
+    contact: Kontakt
+#  shared:
+#    title: Titel
+#    description: Beschreibung
+#    new: Neue
+#    edit: Bearbeiten
+#    update: Update
+#    delete: Löschen
+  calendar:
+    title: Kalendar Titel
+    create: Neue Kalendar
+    created: Kalendar was successfully created
+    updated: Kalendar was successfully updated
+    destroyed: Kalendar was successfully removed
+    day: Tag
+    week: Woche
+    month: Monate
+    weekdays:
+      monday: Montag
+      tuesday: Dienstag
+      wednesday: Mittwoch
+      thursday: Donerstag
+      friday: Freitag
+      saturday: Samstag
+      sunday: Sontag
+#  events:
+#    start_at: Start at
+#    end_at: End at
+#    duration: Dauer
+#  error_messages:
+#    calendar:
+#    events:
+#  success_messages:
+#    calendar:
+#    events:

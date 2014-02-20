@@ -1,0 +1,37 @@
+es:
+  footer:
+    contact: Contacto
+#  shared:
+#    title: Título
+#   description: Descripción
+#   new: Nuevo
+#   edit: Editar
+#   update: Modificar
+#   delete: Borrar
+  calendar:
+    title: Título del calendario
+    create: Crear calendario
+    created: El calendar se ha creado satisfactoriamente
+    updated: El calendar se ha modificado satisfactoriamente
+    destroyed: El calendario se ha borrado
+    day: Día
+    week: Semana
+    month: Meses
+    weekdays:
+      monday: Lunes
+      tuesday: Martes
+      wednesday: Miércoles
+      thursday: Jueves
+      friday: Viernes
+      saturday: Sábado
+      sunday: Domingo
+#  events:
+#    start_at: Fecha de inicio
+#    end_at: Fecha de fin
+#    duration: Duración
+#  error_messages:
+#    calendar:
+#    events:
+#  success_messages:
+#    calendar:
+#    events:
