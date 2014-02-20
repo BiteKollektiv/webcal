@@ -3,7 +3,7 @@ en:
   footer:
     contact: Contact
   shared:
-#    description: Description
+    show: Show
 #    new: New
     edit: Edit
 #    update: Update
@@ -27,9 +27,12 @@ en:
       saturday: Saturday
       sunday: Sunday
   events:
-    list_of_events: List of events
-#    start_at: Start at
-#    end_at: End at
+    list: List of events
+    title: Title
+    description: Description
+    start_at: Start at
+    end_at: End at
+    location: Location
 #    duration: Duration
 #  error_messages:
 #    calendar:

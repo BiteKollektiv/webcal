@@ -2,13 +2,12 @@ de:
   language: Deutsch
   footer:
     contact: Kontakt
-#  shared:
-#    title: Titel
-#    description: Beschreibung
+  shared:
+    show: lalala
 #    new: Neue
 #    edit: Bearbeiten
 #    update: Update
-#    delete: Löschen
+    delete: Löschen
   calendar:
     title: Kalendar Titel
     create: Neue Kalendar
@@ -28,9 +27,12 @@ de:
       sunday: Sontag
   events:
     list_of_events: Eventliste
-#    start_at: Start at
-#    end_at: End at
-#    duration: Dauer
+    title: Titel
+    description: Beschreibung
+    start_at: Start at
+    end_at: End at
+    location: Platztoffffdfdfdf
+    duration: Dauer
 #  error_messages:
 #    calendar:
 #    events:
