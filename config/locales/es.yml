@@ -25,7 +25,8 @@ es:
       friday: Viernes
       saturday: Sábado
       sunday: Domingo
-#  events:
+  events:
+    list_of_events: Listado de eventos
 #    start_at: Fecha de inicio
 #    end_at: Fecha de fin
 #    duration: Duración

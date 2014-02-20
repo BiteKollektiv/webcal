@@ -25,7 +25,8 @@ de:
       friday: Freitag
       saturday: Samstag
       sunday: Sontag
-#  events:
+  events:
+    list_of_events: Eventliste
 #    start_at: Start at
 #    end_at: End at
 #    duration: Dauer

@@ -1,12 +1,12 @@
 en:
   footer:
     contact: Contact
-#  shared:
+  shared:
 #    description: Description
 #    new: New
-#    edit: Edit
+    edit: Edit
 #    update: Update
-#    delete: Delete
+    delete: Delete
   calendar:
     title: Calendar title
     create: Create calendar
@@ -25,7 +25,8 @@ en:
       friday: Friday
       saturday: Saturday
       sunday: Sunday
-#  events:
+  events:
+    list_of_events: List of events
 #    start_at: Start at
 #    end_at: End at
 #    duration: Duration
