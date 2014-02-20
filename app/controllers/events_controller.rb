@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
+#  attr_accessor  :find_calendar_events
+
   def index
+#    @events = find_calendar_events
     @events = Calendar.find_by(params[:token_read]).events
     @calendar = Calendar.find_by(params[:token_read])
     if params[:calendar_id].size == 13
@@ -11,6 +14,7 @@ class EventsController < ApplicationController
   
   def show
     @event = Calendar.find_by(params[:token_read]).events.find(params[:id])
+
   end
 
   def new
@@ -41,6 +45,16 @@ class EventsController < ApplicationController
       @event.destroy
       redirect_to new_event_path, notice: t('event.destroyed')
     end
+
+    def self.find_calendar_events
+debugger
+      Calendar.find_by(params[:token_read]).events
+    end
+
+    def find_calendar_event
+      @event = Calendar.find_by(params[:token_read]).events.find(params[:id])
+    end
+  
 
     private
   
