@@ -13,7 +13,6 @@ class CalendarsController < ApplicationController
     @events = @calendar.events
     @type = params[:type] ? params[:type].to_sym : :month
     @date = params[:date] ? params[:date].to_date : Time.zone.today
-    flash.now[:notice] = "changeable: #{@calendar.writable?}"
   end
 
   def new
@@ -21,7 +20,7 @@ class CalendarsController < ApplicationController
   end
 
   def create
-   @calendar = Calendar.new(calendar_params)
+    @calendar = Calendar.new(calendar_params)
     if @calendar.save
       redirect_to @calendar, notice: t('calendar.created')
     else
