@@ -5,8 +5,6 @@ class Calendar < ActiveRecord::Base
   has_many :events
   attr_accessor :writable
   alias :writable? :writable
-  attr_accessor :changeable
-  alias :changeable? :changeable
 
   def to_param  # overridden
     token_read

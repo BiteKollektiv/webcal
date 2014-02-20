@@ -13,7 +13,7 @@ module Tokenable
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless self.class.exists?(token_write: random_token)
     end
-      self.token_read = token_write[0..12]
+    self.token_read = token_write[0..12]
   end
 
   def token_exists?(token)

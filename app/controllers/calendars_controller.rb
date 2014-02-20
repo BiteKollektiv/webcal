@@ -4,16 +4,16 @@ class CalendarsController < ApplicationController
   def show
     if params[:id].size == 13
       @calendar = Calendar.where(token_read: params[:id]).first
-      @calendar.writable=false
+      @calendar.writable = false
     else
       @calendar = Calendar.where(token_write: params[:id]).first
-      @calendar.writable=true
+      @calendar.writable = true
     end
 
     @events = @calendar.events
-    @type = params[:type].to_sym if params[:type]
-    @date = params[:date] if params[:date]
-    flash.now[:notice] = "changeable: #{@calendar.changeable?}"
+    @type = params[:type] ? params[:type].to_sym : :month
+    @date = params[:date] ? params[:date].to_date : Time.zone.today
+    flash.now[:notice] = "changeable: #{@calendar.writable?}"
   end
 
   def new
@@ -48,7 +48,6 @@ class CalendarsController < ApplicationController
   private
 
     def set_calendar
-
       @calendar = Calendar.find_by(token_write: params[:id])
     end
 

@@ -19,15 +19,15 @@ describe CalendarsHelper do
     end
 
     it "should set the right token for a changeable calendar" do
-      @calendar.changeable = true
+      @calendar.writable = true
       @type = :day
-      expect(direction_link_params(:back)[:token]).to eq(@calendar.token_write)
+      expect(direction_link_params(:back)[:id]).to eq(@calendar.token_write)
     end
 
     it "should set the right token for an unchangeable calendar" do
-      @calendar.changeable = false
+      @calendar.writable = false
       @type = :day
-      expect(direction_link_params(:back)[:token]).to eq(@calendar.token_read)
+      expect(direction_link_params(:back)[:id]).to eq(@calendar.token_read)
     end
 
     context "in the daily view" do
@@ -37,14 +37,14 @@ describe CalendarsHelper do
 
       it "should set the correct forward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.next_day.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:forward)).to eq(options_hash)
       end
 
       it "should set the correct backward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.prev_day.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:back)).to eq(options_hash)
       end
@@ -57,14 +57,14 @@ describe CalendarsHelper do
 
       it "should set the correct forward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.next_week.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:forward)).to eq(options_hash)
       end
 
       it "should set the correct backward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.prev_week.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:back)).to eq(options_hash)
       end
@@ -77,14 +77,14 @@ describe CalendarsHelper do
 
       it "should set the correct forward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.next_month.beginning_of_month.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:forward)).to eq(options_hash)
       end
 
       it "should set the correct backward link" do
         options_hash = {controller: "calendars", action: "show",
-                        token: @calendar.token_read,
+                        id: @calendar.token_read,
                         date: @date.prev_month.beginning_of_month.strftime("%Y-%m-%d"), type: @type}
         expect(direction_link_params(:back)).to eq(options_hash)
       end

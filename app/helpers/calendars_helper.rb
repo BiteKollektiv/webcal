@@ -5,7 +5,8 @@ module CalendarsHelper
   end
 
   def direction_link_params(direction)
-    token = @calendar.changeable? ? @calendar.token_write : @calendar.token_read
+    token = @calendar.writable? ? @calendar.token_write : @calendar.token_read
+
     date = @date
     if direction == :back
       date = @date.prev_day if @type == :day
@@ -17,7 +18,7 @@ module CalendarsHelper
       date = @date.next_month.beginning_of_month if @type == :month
     end
 
-    {controller: "calendars", action: "show", token: token,
+    {controller: "calendars", action: "show", id: token,
      date: date.strftime("%Y-%m-%d"), type: @type}
   end
 

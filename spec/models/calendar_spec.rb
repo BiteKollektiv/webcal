@@ -22,7 +22,7 @@ describe Calendar do
   it { should respond_to(:month) }
   it { should respond_to(:week) }
   it { should respond_to(:today) }
-  it { should respond_to(:changeable?) }
+  it { should respond_to(:writable?) }
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
 #  it { Calendar.should respond_to(:find_by_token) }
