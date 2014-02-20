@@ -1,4 +1,5 @@
 es:
+  language: Español
   footer:
     contact: Contacto
 #  shared:
@@ -36,3 +37,5 @@ es:
 #  success_messages:
 #    calendar:
 #    events:
+  index: 
+    welcome: "¡Dale und nombre a tú calendario, y empieza!"
