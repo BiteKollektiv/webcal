@@ -26,6 +26,9 @@ en:
       friday: Friday
       saturday: Saturday
       sunday: Sunday
+    import:
+      success: Calendar was successfully imported
+      invalidfiletype: This filetype is not supported
 #  events:
 #    start_at: Start at
 #    end_at: End at
@@ -36,7 +39,7 @@ en:
 #  success_messages:
 #    calendar:
 #    events:
-  index: 
+  index:
     welcome: "Enter a name for a new Calendar, and get started!"
 
 
