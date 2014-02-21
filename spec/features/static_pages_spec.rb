@@ -1,11 +1,9 @@
 require 'spec_helper'
 
-feature 'calendar' do
-  scenario 'Create calendar in homepage' do
-    pending "fix this"
+describe 'calendar user' do
+  it 'should create a new calendar from the homepage' do
     visit root_path
-    page.has_xpath?('//*[@id="new_calendar"]/input[2]')
     click_button('Create calendar')
-    expect(page).to have_content('Calendar successfully created')
+    expect(page).to have_content('Calendar was successfully created')
   end
 end

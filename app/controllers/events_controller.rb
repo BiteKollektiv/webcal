@@ -1,6 +1,13 @@
 class EventsController < ApplicationController
+
   def index
-    @events = Event.all
+    @events = Calendar.find_by(params[:token_read]).events
+    @calendar = Calendar.find_by(params[:token_read])
+    is_calendar_writable?
+  end
+  
+  def show
+    @event = Calendar.find_by(params[:token_read]).events.find(params[:id])
   end
 
   def new
@@ -26,16 +33,24 @@ class EventsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+  def destroy
+    @event.destroy
+    redirect_to new_event_path, notice: t('event.destroyed')
+  end
 
-    def destroy
-      @event.destroy
-      redirect_to new_event_path, notice: t('event.destroyed')
-    end
+  private
 
-    private
-    
-    def event_params
-      params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
+  def is_calendar_writable?
+    if params[:calendar_id].size == 13
+      @calendar.writable = false
+    else
+      @calendar.writable = true
     end
   end
+  
+  def event_params
+    params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
+  end
 end
+

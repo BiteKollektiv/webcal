@@ -1,12 +1,13 @@
 en:
+  language: English
   footer:
     contact: Contact
-#  shared:
-#    description: Description
+  shared:
+    show: Show
 #    new: New
-#    edit: Edit
+    edit: Edit
 #    update: Update
-#    delete: Delete
+    delete: Delete
   calendar:
     title: Calendar title
     create: Create calendar
@@ -25,9 +26,13 @@ en:
       friday: Friday
       saturday: Saturday
       sunday: Sunday
-#  events:
-#    start_at: Start at
-#    end_at: End at
+  events:
+    list: List of events
+    title: Title
+    description: Description
+    start_at: Start at
+    end_at: End at
+    location: Location
 #    duration: Duration
 #  error_messages:
 #    calendar:
@@ -35,6 +40,8 @@ en:
 #  success_messages:
 #    calendar:
 #    events:
+  index: 
+    welcome: "Enter a name for a new Calendar, and get started!"
 
 
 
