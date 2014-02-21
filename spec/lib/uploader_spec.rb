@@ -9,7 +9,7 @@ describe Uploader do
 
   describe ".upload" do
     before :all do
-      fixture_file = Rails.root.join('spec', 'fixtures', 'calendars', 'example.ics')
+      fixture_file = Rails.root.join('spec', 'fixtures', 'calendars', 'no_events.ics')
       opts = {type: "text/calendar",
               tempfile: fixture_file,
               filename: fixture_file.basename.to_s
