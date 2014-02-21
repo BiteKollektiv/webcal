@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   def index
     @events = Calendar.find_by(params[:token_read]).events
     @calendar = Calendar.find_by(params[:token_read])
-    is_calendar_writable?
+    set_calendar_permissions
+
   end
   
   def show
@@ -41,7 +42,7 @@ class EventsController < ApplicationController
 
   private
 
-  def is_calendar_writable?
+  def set_calendar_permissions
     if params[:calendar_id].size == 13
       @calendar.writable = false
     else
