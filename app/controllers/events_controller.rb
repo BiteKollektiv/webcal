@@ -1,16 +1,14 @@
 class EventsController < ApplicationController
-  attr_accessor :events 
+  before_action :set_calendar, only: [:index, :show]
+  attr_accessor :calendar
 
   def index
-#    @events = Calendar.find_by(params[:token_read]).events
-    calendar_events
-    @calendar = Calendar.find_by(params[:token_read])
-    set_calendar_permissions
-
+    @events = @calendar.events
+    Calendar.set_calendar_permissions(params[:calendar_id])
   end
   
   def show
-    @event = Calendar.find_by(params[:token_read]).events.find(params[:id])
+    @event = @calendar.events.find(params[:id])
   end
 
   def new
@@ -24,25 +22,18 @@ class EventsController < ApplicationController
   end
 
   def create
-
   end
+
   def destroy
   end
 
-  def calendar_events
-    @events = Calendar.find_by(params[:token_read]).events
+  def set_calendar
+    @calendar = Calendar.find_by(params[:token_read])
+    Calendar.set_permissions(@calendar)
   end
 
   private
 
-  def set_calendar_permissions
-    if params[:calendar_id].size == 13
-      @calendar.writable = false
-    else
-      @calendar.writable = true
-    end
-  end
-  
   def event_params
     params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
   end

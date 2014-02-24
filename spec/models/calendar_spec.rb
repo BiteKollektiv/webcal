@@ -37,21 +37,21 @@ describe Calendar do
     expect(@calendar.token_write).not_to be_nil
   end
 
-#  describe ".find_by_token" do
-#    before :each do
-#      @calendar = create(:calendar)
-#    end
-#
-#    it "sets changeable? to false, if token_read is found" do
-#      calendar = Calendar.find_by_token(@calendar.token_read)
-#      expect(calendar.changeable?).to be_false
-#    end
-#
-#    it "sets changeable? to true, if token_write is found" do
-#      calendar = Calendar.find_by_token(@calendar.token_write)
-#      expect(calendar.changeable?).to be_true
-#    end
-#  end
+  describe ".find_by_token" do
+    before :each do
+      @calendar = create(:calendar)
+    end
+
+    it "sets writable? to false, if token_write is 13 chars long" do
+      calendar= Calendar.set_permissions(@calendar.token_read)
+      expect(calendar.writable?).to be_false
+    end
+
+    it "sets writable? to true, if token_write is found" do
+      calendar= Calendar.set_permissions(@calendar.token_write)
+      expect(calendar.writable?).to be_true
+    end
+  end
 
   describe "#month" do
     it "should include events on Monday of the first week of the month" do
