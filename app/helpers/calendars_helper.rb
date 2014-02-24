@@ -27,8 +27,6 @@ module CalendarsHelper
   end
 
   class CalendarTable < Struct.new(:view, :type, :date, :callback)
-    HEADER = I18n.t('calendar.weekdays').values
-
     delegate :content_tag, to: :view
 
     def table
@@ -39,7 +37,7 @@ module CalendarsHelper
 
     def header
       content_tag :tr do
-        HEADER.map {|day| content_tag :th, day}.join.html_safe
+        I18n.t('date.day_names').map {|day| content_tag :th, day}.join.html_safe
       end
     end
 
