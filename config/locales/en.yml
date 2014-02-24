@@ -26,9 +26,9 @@ en:
       friday: Friday
       saturday: Saturday
       sunday: Sunday
-   import:
-     success: Calendar was successfully imported
-     invalidfiletype: This filetype is not supported
+    import:
+      success: Calendar was successfully imported
+      invalidfiletype: This filetype is not supported
   events:
     list: List of events
     title: Title
