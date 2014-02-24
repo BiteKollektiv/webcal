@@ -34,5 +34,7 @@ module Webcal
 
     # Require modules in /lib
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.serve_static_assets = true
   end
 end
