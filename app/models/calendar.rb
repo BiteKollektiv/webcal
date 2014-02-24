@@ -5,6 +5,8 @@ class Calendar < ActiveRecord::Base
   has_many :events
   attr_accessor :writable
   alias :writable? :writable
+#debugger
+  scope :by_token, ->(token_write) { where(token_write: token_write).first }
 
   def to_param  # overridden
     token_read
@@ -29,6 +31,18 @@ class Calendar < ActiveRecord::Base
 
     events_between(day_start, day_end)
   end
+
+  def self.set_permissions(token)
+    if token.size == 13
+      calendar = Calendar.find_by_token_read(token)
+      calendar.writable = false
+    else
+      calendar = Calendar.find_by_token_write(token)
+      calendar.writable = true
+    end
+    calendar
+  end
+
 
   def events_by_date(date)
     day_start = date.beginning_of_day
