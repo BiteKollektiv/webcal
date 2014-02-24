@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
-  before_action :set_calendar, only: [:show, :edit, :update, :destroy]
+  before_action :set_calendar, only: [:show, :edit, :update, :upload, :destroy]
+  include Uploader
 
   def show
     if params[:id].size == 13
@@ -17,6 +18,15 @@ class CalendarsController < ApplicationController
 
   def new
     @calendar = Calendar.new
+  end
+
+  def upload
+    allowed = ["text/calendar"]
+    if Uploader.upload(params[:ical], allowed)
+      redirect_to @calendar, notice: t('calendar.import.success')
+    else
+      redirect_to @calendar, notice: t('calendar.import.invalidfiletype')
+    end
   end
 
   def create

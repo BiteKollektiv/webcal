@@ -31,5 +31,8 @@ module Webcal
       generate.helper false
       generate.view_specs false
     end
+
+    # Require modules in /lib
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

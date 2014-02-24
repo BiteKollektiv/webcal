@@ -34,6 +34,23 @@ describe CalendarsController do
     end
   end
 
+  describe "POST upload" do
+    before :all do
+      fixture_file = Rails.root.join('spec', 'fixtures', 'calendars', 'no_events.ics')
+      opts = {type: "text/calendar",
+              tempfile: fixture_file,
+              filename: fixture_file.basename.to_s
+      }
+      @local_file = ActionDispatch::Http::UploadedFile.new(opts)
+    end
+
+    it "redirects to the previous calendar" do
+      calendar = Calendar.create! valid_attributes
+      post :upload, id: calendar.token_write, ical: @local_file
+      expect(response).to redirect_to(calendar)
+    end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Calendar" do
