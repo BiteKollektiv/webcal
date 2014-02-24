@@ -17,15 +17,7 @@ es:
     destroyed: El calendario se ha borrado
     day: Día
     week: Semana
-    month: Meses
-    weekdays:
-      monday: Lunes
-      tuesday: Martes
-      wednesday: Miércoles
-      thursday: Jueves
-      friday: Viernes
-      saturday: Sábado
-      sunday: Domingo
+    month: Mes
 #  events:
 #    start_at: Fecha de inicio
 #    end_at: Fecha de fin

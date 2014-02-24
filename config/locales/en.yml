@@ -18,14 +18,6 @@ en:
     day: Day
     week: Week
     month: Month
-    weekdays:
-      monday: Monday
-      tuesday: Tuesday
-      wednesday: Wednesday
-      thursday: Thursday
-      friday: Friday
-      saturday: Saturday
-      sunday: Sunday
     import:
       success: Calendar was successfully imported
       invalidfiletype: This filetype is not supported

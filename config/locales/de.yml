@@ -18,14 +18,6 @@ de:
     day: Tag
     week: Woche
     month: Monate
-    weekdays:
-      monday: Montag
-      tuesday: Dienstag
-      wednesday: Mittwoch
-      thursday: Donerstag
-      friday: Freitag
-      saturday: Samstag
-      sunday: Sontag
 #  events:
 #    start_at: Start at
 #    end_at: End at
