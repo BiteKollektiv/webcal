@@ -8,23 +8,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
-    <nav>
-      <%= render "shared/header" %>
-    </nav>
-    <div id="flash-message">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-    </div>
-  </header>
+  <div id="wrapper">
+    <header>
+      <nav>
+        <%= render "shared/header" %>
+      </nav>
+      <div id="flash-message">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+      </div>
+    </header>
 
-  <section>
-    <%= yield %>
-  </section>
+    <section>
+      <%= yield %>
+    </section>
 
-  <footer>
-    <%= render "shared/footer" %>
-  </footer>
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
+  </div> <!-- #wrapper -->
 </body>
 </html>

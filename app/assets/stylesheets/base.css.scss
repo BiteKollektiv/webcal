@@ -2,6 +2,11 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300);
 
+html, 
+body {
+	height: 100%
+}
+
 html,
 body,
 ul,
@@ -11,6 +16,11 @@ ol {
 
   font-family: 'Source Sans Pro';
   font-size: 15px;
+}
+
+#wrapper {
+	position: relative;
+	min-height: 100%
 }
 
 header {
@@ -28,7 +38,7 @@ header {
 section {
 	width: 100%;
 	text-align: center;
-
+	padding-bottom: 40px;
 	h1 {
 		font-size: 2em;
 	}
@@ -39,5 +49,6 @@ footer {
 	bottom: 10px;
 	left: 10px;
 	right: 10px;
+	height: 20px;
 	width: 100%;
 }
