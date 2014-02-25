@@ -23,7 +23,7 @@
   <% if @calendar.events_by_date(date) %>
     <ul>
      <% @calendar.events_by_date(date).each do |event| %>
-        <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title %></li>
+        <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title, calendar_event_path(@calendar, event) %></li>
           <p><%= event.description %></p>
       <% end %>
     </ul>

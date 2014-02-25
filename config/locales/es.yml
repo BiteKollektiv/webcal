@@ -2,13 +2,12 @@ es:
   language: Español
   footer:
     contact: Contacto
-#  shared:
-#    title: Título
-#   description: Descripción
+  shared:
+    show: Mostrar
 #   new: Nuevo
-#   edit: Editar
+    edit: Editar
 #   update: Modificar
-#   delete: Borrar
+    delete: Borrar
   calendar:
     title: Título del calendario
     create: Crear calendario
@@ -18,10 +17,14 @@ es:
     day: Día
     week: Semana
     month: Mes
-#  events:
-#    start_at: Fecha de inicio
-#    end_at: Fecha de fin
-#    duration: Duración
+  events:
+    list: Listado de eventos
+    title: Título
+    description: Descripción
+    start_at: Fecha de inicio
+    end_at: Fecha de fin
+    location: Lugar
+    duration: Duración
 #  error_messages:
 #    calendar:
 #    events:
@@ -29,4 +32,4 @@ es:
 #    calendar:
 #    events:
   index: 
-    welcome: "¡Dale und nombre a tú calendario, y empieza!"
+    welcome: "¡Dale un nombre a tú calendario, y empieza!"
