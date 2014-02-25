@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
+gem 'handlebars_assets'
 
 gem 'turbolinks' # Faster links
 
