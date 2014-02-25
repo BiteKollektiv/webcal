@@ -5,11 +5,10 @@ class Calendar < ActiveRecord::Base
   has_many :events
   attr_accessor :writable
   alias :writable? :writable
-#debugger
   scope :by_token, ->(token_write) { where(token_write: token_write).first }
 
   def to_param  # overridden
-    token_read
+    token_write
   end
 
   def month
