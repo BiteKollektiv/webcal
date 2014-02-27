@@ -25,7 +25,7 @@ describe Calendar do
   it { should respond_to(:writable?) }
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
-#  it { Calendar.should respond_to(:find_by_token) }
+  it { should respond_to(:import) }
 
   # Validation specs
   it { should callback(:generate_token).before(:validation) }
@@ -50,6 +50,18 @@ describe Calendar do
     it "sets writable? to true, if token_write is found" do
       calendar= Calendar.set_permissions(@calendar.token_write)
       expect(calendar.writable?).to be_true
+    end
+  end
+
+  describe "#import" do
+    before :all do
+      fixture_file = Rails.root.join('spec', 'fixtures', 'calendars', 'no_events.ics')
+      opts = {type: "text/calendar",
+              tempfile: fixture_file,
+              filename: fixture_file.basename.to_s
+      }
+      local_file = ActionDispatch::Http::UploadedFile.new(opts)
+      @uploaded_file = Uploader.upload(local_file, ["text/calendar"])
     end
   end
 

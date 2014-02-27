@@ -20,6 +20,7 @@ gem 'turbolinks' # Faster links
 gem 'rails-i18n', '~> 4.0.0' # import standard translations
 
 gem 'timecop'
+gem 'icalendar'
 
 gem 'gutentag' # easy, simple tags for events
 

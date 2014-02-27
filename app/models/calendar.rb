@@ -31,6 +31,11 @@ class Calendar < ActiveRecord::Base
     events_between(day_start, day_end)
   end
 
+  def import(file)
+    importer = CalendarImporter.new(self, file)
+    importer.import
+  end
+
   def self.set_permissions(token)
     if token.size == 13
       calendar = Calendar.find_by_token_read(token)
