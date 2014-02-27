@@ -24,6 +24,7 @@ class CalendarsController < ApplicationController
     allowed = ["text/calendar"]
     if file = Uploader.upload(params[:ical], allowed)
       @calendar.import(file)
+      File.delete(file)
       redirect_to @calendar, notice: t('calendar.import.success')
     else
       redirect_to @calendar, notice: t('calendar.import.invalidfiletype')
