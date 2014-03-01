@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf8" />
-  <title>Webcalendar</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="wrapper">
-    <header>
-      <nav>
-        <%= render "shared/header" %>
-      </nav>
-      <div id="flash-message">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-        <% end %>
-      </div>
-    </header>
-
-    <section>
+  <head>
+    <meta charset="utf8" />
+    <title>Webcalendar</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrap">
       <%= yield %>
-    </section>
 
-    <footer>
+      <footer>
       <%= render "shared/footer" %>
-    </footer>
-  </div> <!-- #wrapper -->
-</body>
+      </footer>
+    </div>
+  </body>
 </html>

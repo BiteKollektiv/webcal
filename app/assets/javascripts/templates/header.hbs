@@ -1,0 +1,20 @@
+<hgroup>
+	<h1>WebCal title {{calendarTitle}}</h1>
+	<h2>That's my calendar {{calendarDescription}}</h2>
+</hgroup>
+<nav>
+	{{#if isEdit}}
+	<ul>
+		<li>create</li>
+		<li>Export</li>
+		<li>Share</li>
+	</ul>
+	{{else}}
+	<ul>
+		<li>create</li>
+		<li>Export</li>
+	</ul>
+	{{/if}}
+</nav>
+
+<div class="clear"></div>

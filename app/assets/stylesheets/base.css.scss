@@ -2,53 +2,65 @@
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300);
 
-html, 
-body {
-	height: 100%
-}
-
-html,
-body,
-ul,
-ol {
+html, body, ul, ol, li, h1, h2, h3, h4, h5, h6 {
   margin:  0;
   padding: 0;
-
   font-family: 'Source Sans Pro';
   font-size: 15px;
 }
 
-#wrapper {
-	position: relative;
-	min-height: 100%
+ul, li { list-style: none; }
+
+a { color: #1BA39C; text-decoration: none;}
+a:hover { color: #65C6BB; text-decoration: none; }
+
+
+/** HELPER **/
+.clear {
+  clear: both;
 }
 
 header {
-	width: 100%;
-	position: relative;
-	height: 150px;
-	
-	nav {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-	}
+  width: 100%;
+  position: relative;
+  height: auto;
+  border-bottom: 1px #444444 solid;
+  margin: 10px 0;
+  padding: 10px 20px;
+
+  hgroup {
+    float: left;
+    width: 50%;
+  }
+
+  nav {
+    position: relative;
+    right: 0px;
+    width: 30%;
+    display: inline-block;
+    ul {
+      width: 300px;
+      li {
+        display: inline;
+      }
+    }
+  }
 }
 
 section {
-	width: 100%;
-	text-align: center;
-	padding-bottom: 40px;
-	h1 {
-		font-size: 2em;
-	}
+  width: 100%;
+  text-align: center;
+  padding-bottom: 40px;
+  h1 {
+    font-size: 2em;
+  }
 }
 
 footer {
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	height: 20px;
-	width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 20px;
+  width: 100%;
 }
