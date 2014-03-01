@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require libs/underscore
-//= require handlebars.runtime
 //= require libs/backbone
-//= require_tree ./backbone
+//= require handlebars
+//= require handlebars.runtime
+//= require backbone/app
+//= require_tree ./templates
+//= require_tree ./backbone/models
+//= require_tree ./backbone/collections
+//= require_tree ./backbone/views
 //= require_tree .
