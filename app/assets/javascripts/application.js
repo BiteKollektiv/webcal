@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+//= require libs/fullcalendar
+//= require libs/gcal
 //= require libs/underscore
 //= require libs/backbone
 //= require handlebars
