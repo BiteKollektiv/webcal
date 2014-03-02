@@ -2,7 +2,7 @@
 <h2>Title =><%= @calendar.title %></h2>
 
 <% if @calendar.writable %>
-  <%= link_to 'Edit', @root %>
+  <%= link_to 'Edit', edit_calendar_path %>
   <%= form_tag({action: :upload}, multipart: true) do %>
     <%= file_field_tag 'ical' %>
     <%= submit_tag "Upload" %>
