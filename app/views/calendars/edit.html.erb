@@ -1,2 +1,11 @@
 <h1>Calendars#edit</h1>
 <p>Find me in app/views/calendars/edit.html.erb</p>
+<div >
+  <%= form_for @calendar do |f| %>
+    <%= f.label t('calendar.title') %>
+    <%= f.text_field :title %><br/>
+    <%= f.label t('calendar.start_week_day') %>
+    <%= f.select(:id, options_for_select(@weekdays.collect {|d| d}, "Monday")) %><br/>
+    <%= f.submit t('calendar.update') %> <br/>
+  <% end %>
+  </div>

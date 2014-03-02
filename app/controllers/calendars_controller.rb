@@ -18,6 +18,7 @@ class CalendarsController < ApplicationController
 
   def new
     @calendar = Calendar.new
+    @weekdays = I18n.t('date.day_names')
   end
 
   def upload
@@ -46,6 +47,7 @@ class CalendarsController < ApplicationController
   end
 
   def edit
+    @weekdays = I18n.t('date.day_names')
   end
 
   def update

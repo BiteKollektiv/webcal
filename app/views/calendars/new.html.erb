@@ -4,6 +4,7 @@
   <%= form_for @calendar do |f| %>
     <%= f.label t('calendar.title') %>
     <%= f.text_field :title, :placeholder => @calendar.read_token, :autofocus => true %>
+    <%= f.select(options_for_select(@weekdays.collect {|d| d})) %>
     <%= f.submit t('calendar.create') %> <br/>
   <% end %>
   </div>
