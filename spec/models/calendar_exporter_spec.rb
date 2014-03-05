@@ -4,7 +4,7 @@ describe CalendarExporter do
   describe "#export" do
     before :each do
       @calendar = create(:calendar)
-      @exporter = CalendarExporter.new(@calendar, &ICAL_FORMATTER)
+      @exporter = CalendarExporter.new(@calendar, &CalendarExporter::ICAL_FORMATTER)
     end
 
     it "should return the path to the saved .ical file" do
