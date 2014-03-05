@@ -34,7 +34,6 @@ class CalendarsController < ApplicationController
   def download
     file = @calendar.to_ical
     send_file file, type: 'text/calendar'
-    File.delete(file)
   end
 
   def create
