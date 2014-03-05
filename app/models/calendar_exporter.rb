@@ -1,5 +1,5 @@
 require 'icalendar'
-
+require 'fileutils'
 
 ICAL_FORMATTER = lambda do |calendar|
   ical_calendar = Icalendar::Calendar.new
@@ -18,14 +18,24 @@ ICAL_FORMATTER = lambda do |calendar|
 end
 
 class CalendarExporter
+  DOWNLOAD_DIR = Rails.root.join('public', 'downloads')
+
   def initialize(calendar, &formatter)
     @calendar = calendar
     @formatter = formatter
   end
 
   def export
-    @formatter.call(@calendar)
-    # TODO: save the file and return the path
+    ical = @formatter.call(@calendar)
+
+    FileUtils.mkdir_p(DOWNLOAD_DIR)
+    filename = Rails.root.join(DOWNLOAD_DIR, SecureRandom.urlsafe_base64 + ".ics")
+
+    File.open(filename, 'wb') do |file|
+      file.write(ical)
+    end
+
+    filename.to_s
   end
 end
 
