@@ -59,6 +59,20 @@ describe CalendarsController do
     end
   end
 
+  describe "Calendar export" do
+    it "deletes the exported file after download" do
+      def count_files
+        Dir.glob(
+          File.join(CalendarExporter::DOWNLOAD_DIR, '*'))
+          .select { |file| File.file?(file) }.count
+      end 
+      before_count = count_files
+      calendar = Calendar.create! valid_attributes
+      get :download, id: calendar.token_write
+      expect(count_files).to be before_count 
+    end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Calendar" do
