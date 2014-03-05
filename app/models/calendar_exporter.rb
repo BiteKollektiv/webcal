@@ -10,8 +10,11 @@ class CalendarExporter
 
     calendar.events.each do |event|
       ical_event = Icalendar::Event.new
+      ical_event.summary = event.title
+      ical_event.description = event.description
       ical_event.start = event.starts_at
       ical_event.end = event.ends_at
+      ical_event.categories = event.tag_names
 
       ical_calendar.add_event(ical_event)
     end

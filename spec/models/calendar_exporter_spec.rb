@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CalendarExporter do
   describe "#export" do
     before :each do
-      @calendar = create(:calendar)
+      @calendar = create(:calendar_with_events_with_tags)
       @exporter = CalendarExporter.new(@calendar, &CalendarExporter::ICAL_FORMATTER)
     end
 
