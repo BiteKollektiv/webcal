@@ -5,6 +5,7 @@ Webcal::Application.routes.draw do
   scope "/:locale", locale: /en|es|de/ do
     resources :calendars do
       post "upload", on: :member
+      get "download", on: :member
       resources :events
     end
   end
