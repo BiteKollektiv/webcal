@@ -1,6 +1,7 @@
 <h1>Calendars#show</h1>
 <h2>Title =><%= @calendar.title %></h2>
 
+<%= link_to 'Download .ics', download_calendar_path %>
 <% if @calendar.writable %>
   <%= link_to 'Edit', @root %>
   <%= form_tag({action: :upload}, multipart: true) do %>
@@ -8,7 +9,6 @@
     <%= submit_tag "Upload" %>
   <% end %>
 <% end %>
-
 
 <div id="calendar-nav">
   <%= link_to "<", direction_link_params(:back) %>

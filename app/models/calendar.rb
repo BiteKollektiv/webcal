@@ -36,6 +36,11 @@ class Calendar < ActiveRecord::Base
     importer.import
   end
 
+  def to_ical
+    exporter = CalendarExporter.new(self, &CalendarExporter::ICAL_FORMATTER)
+    exporter.export
+  end
+
   def self.set_permissions(token)
     if token.size == 13
       calendar = Calendar.find_by_token_read(token)

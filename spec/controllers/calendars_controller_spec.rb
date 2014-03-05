@@ -51,6 +51,14 @@ describe CalendarsController do
     end
   end
 
+  describe "GET download" do
+    it "redirect to the previous calendar" do
+      calendar = Calendar.create! valid_attributes
+      get :download, id: calendar.token_write
+      expect(response.status).to be 200
+    end
+  end
+
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Calendar" do

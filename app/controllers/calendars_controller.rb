@@ -1,5 +1,5 @@
 class CalendarsController < ApplicationController
-  before_action :set_calendar, only: [:show, :edit, :update, :upload, :destroy]
+  before_action :set_calendar, only: [:show, :edit, :update, :upload, :download, :destroy]
   include Uploader
 
   def show
@@ -29,6 +29,11 @@ class CalendarsController < ApplicationController
     else
       redirect_to @calendar, notice: t('calendar.import.invalidfiletype')
     end
+  end
+
+  def download
+    file = @calendar.to_ical
+    send_file file, type: 'text/calendar'
   end
 
   def create

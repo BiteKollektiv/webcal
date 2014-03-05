@@ -26,6 +26,7 @@ describe Calendar do
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
   it { should respond_to(:import) }
+  it { should respond_to(:to_ical) }
 
   # Validation specs
   it { should callback(:generate_token).before(:validation) }
