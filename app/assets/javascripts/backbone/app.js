@@ -1,19 +1,22 @@
 $(function() {
-	var CalendarView = Backbone.View.extend({
+	var CalendarApp = Backbone.View.extend({
 		el: $('#wrap'),
 
 		initialize: function(){
+			this.headerModel = new HeaderModel();
 			this.headerView = new HeaderView({
-				model: HeaderModel,
+				model: this.headerModel,
 				el: $('header')
 			});
+
+			this.headerModel.fetch();
+
 			this.monthView = new MonthView({
 				el: $("#calendarView")
 			})
 		}
 	});
 
-	calendarView = new CalendarView;
-
+	var calendar = new CalendarApp;
 
 });
