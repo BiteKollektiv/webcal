@@ -11,16 +11,17 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui
+//= require jquery.ui.all
 //= require libs/fullcalendar
 //= require libs/gcal
 //= require libs/underscore
 //= require libs/backbone
 //= require handlebars
 //= require handlebars.runtime
-//= require backbone/app
 //= require_tree ./templates
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views
+//= require backbone/app
+
 //= require_tree .

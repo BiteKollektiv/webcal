@@ -1,4 +1,8 @@
-{
-	"calendarTitle": "WebCal",
-	"calendarDescription": "Hello, I'm your new calendar"
-}	
+var details [
+
+	{
+		"calendarTitle": "WebCal",
+		"calendarDescription": "Hello, I'm your new calendar"
+	}	
+
+]

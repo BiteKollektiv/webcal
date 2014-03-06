@@ -1,5 +1,7 @@
 var HeaderModel = Backbone.Model.extend({
-	
 	isEdit: false,
-	url: 'calendarDetail.json'
+	url: '/assets/calendarDetail.json'
 });
+
+headerModel = new HeaderModel();
+headerModel.fetch();
