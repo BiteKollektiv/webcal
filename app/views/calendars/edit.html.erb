@@ -5,7 +5,7 @@
     <%= f.label t('calendar.title') %>
     <%= f.text_field :title %><br/>
     <%= f.label t('calendar.start_week_day') %>
-    <%= f.select(:id, options_for_select(@weekdays.collect {|d| d}, "Monday")) %><br/>
+    <%= select_tag "weekday", options_for_select(@weekdays.collect {|d| d}, "Monday") %><br/>
     <%= f.submit t('calendar.update') %> <br/>
   <% end %>
   </div>
