@@ -7,6 +7,8 @@ env:
   - secure: No8n0UKivKMLSq1Xz9rNSW6L79jTMWgI0sUOxJpLy62v9iQFEb3FKtaTPduXs5PuorX0t2eA4Hlq/QCJSvX/nA/+qa42Lil0I6ARsyPDawGbO1l4EZ4GPamKtjRfyNlhBm0zB+PtSJXlQyAFc+xlVQa1vHOqLTfNRGfJb+SuGhc=
   - secure: Rf9HSGmItO8AkJkLCp9vWyfr0JXDiTYirtruojw1GWY7GDK29f3K/F0JFBhypoV1baGGNYGlDqf3Bkw8l//qguKkTbkUJ/Gxtrgxegv+xF7qSTPUgAG6jcXS1MBX8gNtDQSiwmbUkI3tHalH1kJTMQ+y+0Uhb2YCxBmIPtOgX3c=
   - secure: QFGYIjCLnHqtL+ABvFOdLGmtkwqm8kjEJV3G+arE2+BMgK3OutcuKWZm5aep7CxCsLJ22rI5huXQqDMejKZNVHacv5K3ytt8ukD86CePVh0ECuA5+xIs6HcL4SKvTJeVJhnc04xi9CTzhOmSR6njUmAPj2HV5piMkQ/8jfv+cPA=
+  - secure: jRqDDdCGFMcBuM1hdQi3vunUY6SPL5breqKs3NNfTxEfGMsH2QGAlwY4v2WRLBXAH11OeF1A/AzMFuVjbq08EUIS7Mwc19MjxhqRqVrSmL3WOrblYfwzLcPVF0PLPnkhFG8/EJj3tNhUSb5Hp55YSLKoRx7JrrBLp2x4+IAE5qg=
+  - secure: VpYADZVz3iNJlrx79gGjboT9caRev9H+air7vnzD0pBsE2uKreNxdsaZA60X6XcMo9lLtu3R/OYfzjkfVhbvkSEimKziYo3vDj1DlJI9xrETov+wMPu1KIGeKPbawktXFgg3rFoTKf6Dynkcb/uiaG7EoYnlGEukB+e5AVcSDC0=
   matrix:
   - DB: postgresql
 before_script:
@@ -16,5 +18,5 @@ script:
 - bundle exec rspec spec/
 deploy:
   provider: heroku
-  api_key: $HEROKU_API_KEY
-  run: "RAILS_ENV=production rake db:migrate"
+  api_key: "$HEROKU_API_KEY"
+  run: RAILS_ENV=production rake db:migrate
