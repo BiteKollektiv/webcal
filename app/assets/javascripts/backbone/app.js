@@ -8,12 +8,14 @@ $(function() {
 				model: this.headerModel,
 				el: $('header')
 			});
-
 			this.headerModel.fetch();
+			
+			this.eventsView = new EventsView({
+				el: $("#calendarView"),
+				collection: events
+			}).render();
 
-			this.monthView = new MonthView({
-				el: $("#calendarView")
-			})
+			this.events.fetch();
 		}
 	});
 
