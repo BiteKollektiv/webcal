@@ -2,8 +2,8 @@
 # ENV['DB'] is set in .travis.yml
 postgresql: &postgresql
   adapter: postgresql
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USER'] %>
+  database: <%= ENV['DB_NAME'] || "webcal_test" %>
+  username: <%= ENV['DB_USER'] || "postgres" %>
   password: <%= ENV['DB_PASSWORD'] %>
   min_messages: ERROR
 
