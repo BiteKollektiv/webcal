@@ -10,11 +10,11 @@ class CalendarsController < ApplicationController
       @calendar = Calendar.where(token_write: params[:id]).first
       @calendar.writable = true
     end
-
     @events = @calendar.events
     @type = params[:type] ? params[:type].to_sym : :month
     @date = params[:date] ? params[:date].to_date : Time.zone.today
-    @weekday = params[:weekday] ? params[:weekday].to_sym : :monday
+    @weekday = params[:weekday] ||=  "Monday"
+
   end
 
   def new

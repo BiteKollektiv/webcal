@@ -12,7 +12,6 @@
     <%= submit_tag "Upload" %>
   <% end %>
 
-
   <div id="calendar-nav">
     <%= link_to "<", direction_link_params(:back) %>
     <%= link_to ">", direction_link_params(:forward) %>
@@ -21,16 +20,15 @@
     <%= link_to t('calendar.month'), type_link_params(:month) %>
   </div>
 
-  <%= calendar(@type, @date) do |date| %>
-    <%= date.day %>
-    <% if @calendar.events_by_date(date) %>
-      <ul>
-       <% @calendar.events_by_date(date).each do |event| %>
-          <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title %></li>
-            <p><%= event.description %></p>
-        <% end %>
-      </ul>
-    <% end %>
+<%= calendar(@type, @date, @starts_week_on) do |date| %>
+  <%= date.day %>
+  <% if @calendar.events_by_date(date) %>
+    <ul>
+     <% @calendar.events_by_date(date).each do |event| %>
+        <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title, calendar_event_path(@calendar, event) %></li>
+          <p><%= event.description %></p>
+      <% end %>
+    </ul>
   <% end %>
 
 <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>

@@ -36,9 +36,23 @@ module CalendarsHelper
     end
 
     def header(weekday)
+      week_starts_at(weekday)
       content_tag :tr do
-        I18n.t('date.day_names').map {|day| content_tag :th, day}.join.html_safe
+        #      I18n.t('date.day_names', "Monday").map {|day| content_tag :th, day}.join.html_safe
+        @weekdays.map {|day| content_tag :th, day[0]}.join.html_safe
       end
+    end
+
+    def week_starts_at(weekday)
+      days_of_week = (0..6).map { |wday| [Date::DAYNAMES[wday], wday] }
+      days_of_week.each do  |a|
+        if a[0] == weekday
+          @starts_week_at = a[1].to_i 
+        end
+      end
+      @weekdays = (@starts_week_at..6).map { |wday| [Date::DAYNAMES[wday], wday] } + (0..@starts_week_at-1).map { |wday| [Date::DAYNAMES[wday], wday] }
+
+      return @weekdays
     end
 
     def view_type(type)
