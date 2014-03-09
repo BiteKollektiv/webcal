@@ -3,9 +3,16 @@ class EventsController < ApplicationController
   attr_accessor :calendar
 
   def index
-    @events = @calendar.events
+    if @calendar.events 
+      @events = @calendar.events
+      respond_to do |format|
+        format.html
+        format.js { @events.to_json }
+      end
+    end
 #    Calendar.set_calendar_permissions(params[:calendar_id])
   end
+
   
   def show
     @event = @calendar.events.find(params[:id])
@@ -15,7 +22,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -34,8 +40,7 @@ class EventsController < ApplicationController
 
   private
 
-  def event_params
-    params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
-  end
+    def event_params
+      params.require(:event).permit(:title, :description, :location, :starts_at, :ends_at)
+    end
 end
-

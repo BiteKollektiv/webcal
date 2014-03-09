@@ -19,6 +19,20 @@ describe CalendarsController do
     end
   end
 
+  describe "GET show with format json" do 
+    let(:calendar) { FactoryGirl.create(:calendar_with_events) }
+    before { get :show, id: calendar.token_read, format: :json }
+
+    it "contains the calendars read token" do
+      expect(response.body).to have_content(calendar.token_read)
+    end
+
+    it "contains the first event that belongs to the calendar" do
+      expect(response.body).to have_content(calendar.events.first.title)
+    end
+  end
+
+
   describe "GET new" do
     it "assigns a new calendar as @calendar" do
       get :new, {}

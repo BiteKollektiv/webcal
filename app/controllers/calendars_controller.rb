@@ -1,5 +1,7 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :edit, :update, :upload, :download, :destroy]
+  respond_to :json, :html
+
   include Uploader
 
   def show
@@ -11,9 +13,16 @@ class CalendarsController < ApplicationController
       @calendar.writable = true
     end
 
-    @events = @calendar.events
-    @type = params[:type] ? params[:type].to_sym : :month
-    @date = params[:date] ? params[:date].to_date : Time.zone.today
+    respond_with(@calendar) do |format|
+      format.html do 
+        @events = @calendar.events
+        @type = params[:type] ? params[:type].to_sym : :month
+        @date = params[:date] ? params[:date].to_date : Time.zone.today
+      end
+      format.json do 
+        render json: @calendar.to_json(include: :events)
+      end
+    end
   end
 
   def new
