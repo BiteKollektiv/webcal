@@ -1,7 +1,7 @@
 module CalendarsHelper
 
-  def calendar(type = :month, date = Time.zone.today, &block)
-    CalendarTable.new(self, type, date, block).table
+  def calendar(type = :month, date = Time.zone.today, weekday = params[:weekday],  &block)
+    CalendarTable.new(self, type, date, weekday, block).table
   end
 
   def direction_link_params(direction)
@@ -26,7 +26,7 @@ module CalendarsHelper
     {date: @date, type: type}
   end
 
-  class CalendarTable < Struct.new(:view, :type, :date, :callback)
+  class CalendarTable < Struct.new(:view, :type, :date, :weekday, :callback)
     delegate :content_tag, to: :view
 
     def table
@@ -35,7 +35,7 @@ module CalendarsHelper
       end
     end
 
-    def header
+    def header(weekday)
       content_tag :tr do
         I18n.t('date.day_names').map {|day| content_tag :th, day}.join.html_safe
       end
@@ -46,9 +46,9 @@ module CalendarsHelper
       when :day
         today
       when :week
-        header + week
+        header(weekday) + week(weekday)
       else
-        header + month
+        header(weekday) + month(weekday)
       end
     end
 
@@ -56,18 +56,17 @@ module CalendarsHelper
       day_cell(date).html_safe
     end
 
-    def week
-debugger
-      first = date.beginning_of_week
+    def week(weekday)
+      first = date.beginning_of_week(weekday.downcase.to_sym)
       last = date.end_of_week
 
       dates = (first..last).to_a
       dates.map { |day| day_cell(day)}.join.html_safe
     end
 
-    def month
-      first = date.beginning_of_month.beginning_of_week
-      last = date.end_of_month.end_of_week
+    def month(weekday)
+      first = date.beginning_of_month.beginning_of_week(weekday.downcase.to_sym)
+      last = date.end_of_month.end_of_week(weekday.downcase.to_sym)
       weeks = (first..last).to_a.in_groups_of(7)
 
       weeks.map do |week|
