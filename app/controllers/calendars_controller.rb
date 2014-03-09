@@ -14,6 +14,7 @@ class CalendarsController < ApplicationController
     @events = @calendar.events
     @type = params[:type] ? params[:type].to_sym : :month
     @date = params[:date] ? params[:date].to_date : Time.zone.today
+    @weekday = params[:weekday] ? params[:weekday].to_sym : :monday
   end
 
   def new
@@ -52,7 +53,7 @@ class CalendarsController < ApplicationController
 
   def update
     if @calendar.update(calendar_params)
-      redirect_to @calendar, notice: t('calendar.updated')
+      redirect_to calendar_path(@calendar,:weekday => params[:weekday])
     else
       render action: 'edit'
     end
@@ -70,6 +71,6 @@ class CalendarsController < ApplicationController
     end
 
     def calendar_params
-      params.require(:calendar).permit(:title, :description, :token_read, :token_write, :type, :date)
+      params.require(:calendar).permit(:title, :description, :token_read, :token_write, :type, :date, :weekday)
     end
 end

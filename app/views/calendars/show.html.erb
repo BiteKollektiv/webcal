@@ -33,6 +33,7 @@
     <% end %>
   <% end %>
 
-  <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
-  <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
+<p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
+<p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
+<p> Week starts on <%= params[:weekday] %></p>
 

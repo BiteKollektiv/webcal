@@ -57,6 +57,7 @@ module CalendarsHelper
     end
 
     def week
+debugger
       first = date.beginning_of_week
       last = date.end_of_week
 
