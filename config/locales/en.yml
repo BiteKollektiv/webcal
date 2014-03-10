@@ -28,6 +28,8 @@ en:
     start_at: Start at
     end_at: End at
     location: Location
+    create: Create Event
+    update: Update Event
 #    duration: Duration
   
 #  error_messages:
