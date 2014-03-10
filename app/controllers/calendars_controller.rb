@@ -19,8 +19,13 @@ class CalendarsController < ApplicationController
         @type = params[:type] ? params[:type].to_sym : :month
         @date = params[:date] ? params[:date].to_date : Time.zone.today
       end
-      format.json do 
-        render json: @calendar.to_json(include: :events)
+      format.json do
+        if @calendar.writable 
+          render json: @calendar.to_json(include: :events)
+        else
+          render json: @calendar.to_json(include: :events, except: :token_write)
+        end
+
       end
     end
   end

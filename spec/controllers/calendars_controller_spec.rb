@@ -19,7 +19,7 @@ describe CalendarsController do
     end
   end
 
-  describe "GET show with format json" do 
+  describe "GET show with format json read-only" do 
     let(:calendar) { FactoryGirl.create(:calendar_with_events) }
     before { get :show, id: calendar.token_read, format: :json }
 
@@ -30,7 +30,21 @@ describe CalendarsController do
     it "contains the first event that belongs to the calendar" do
       expect(response.body).to have_content(calendar.events.first.title)
     end
+
+    it "will not output the write token, because that'd be dangerous!" do
+      expect(response.body).not_to have_content(calendar.token_write)
+    end
   end
+
+  describe "GET show with format json read-write" do 
+    let(:calendar) { FactoryGirl.create(:calendar_with_events) }
+    before { get :show, id: calendar.token_write, format: :json }
+
+    it "contains the write token, because you had it all the way" do 
+      expect(response.body).to have_content(calendar.token_write)
+    end
+  end
+
 
 
   describe "GET new" do
