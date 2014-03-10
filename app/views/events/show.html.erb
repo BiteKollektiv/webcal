@@ -21,3 +21,5 @@
   <b><%= t('events.ends_at') %></b>
   <%= @event.ends_at %>
 </p>
+
+<%= link_to t('events.edit'), edit_calendar_event_path(@calendar.token_write, @event.id) %>
