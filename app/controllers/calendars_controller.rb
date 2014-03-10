@@ -5,14 +5,6 @@ class CalendarsController < ApplicationController
   include Uploader
 
   def show
-    if params[:id].size == 13
-      @calendar = Calendar.where(token_read: params[:id]).first
-      @calendar.writable = false
-    else
-      @calendar = Calendar.where(token_write: params[:id]).first
-      @calendar.writable = true
-    end
-
     respond_with(@calendar) do |format|
       format.html do 
         @events = @calendar.events
@@ -46,6 +38,7 @@ class CalendarsController < ApplicationController
   end
 
   def download
+    @calendar = Calendar.where(params[:token_read]) if not @calendar
     file = @calendar.to_ical
     send_file file, type: 'text/calendar'
   end
@@ -78,7 +71,13 @@ class CalendarsController < ApplicationController
   private
 
     def set_calendar
-      @calendar = Calendar.find_by(token_write: params[:id])
+      if params[:id].size == 13
+        @calendar = Calendar.find_by(token_read: params[:id])
+        @calendar.writable = false
+      else
+        @calendar = Calendar.find_by(token_write: params[:id])
+        @calendar.writable = true
+      end
     end
 
     def calendar_params
