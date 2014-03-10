@@ -28,7 +28,9 @@ en:
     start_at: Start at
     end_at: End at
     location: Location
+    new: New Event
     create: Create Event
+    edit: Edit Event
     update: Update Event
 #    duration: Duration
   
