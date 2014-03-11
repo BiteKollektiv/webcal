@@ -1,44 +1,14 @@
-
 <header></header>
-<div id="calendarView"></div>
-<h1>Calendars#show</h1>
-<h2>Title =><%= @calendar.title %></h2>
 
-<%= link_to 'Download .ics', download_calendar_path %>
 <% if @calendar.writable %>
-  <%= link_to 'Edit', edit_calendar_path %>
+  <%= link_to 'Edit', @root %>
   <%= form_tag({action: :upload}, multipart: true) do %>
     <%= file_field_tag 'ical' %>
     <%= submit_tag "Upload" %>
   <% end %>
 <% end %>
 
-  <div id="calendar-nav">
-    <%= link_to "<", direction_link_params(:back) %>
-    <%= link_to ">", direction_link_params(:forward) %>
-    <%= link_to t('calendar.day'), type_link_params(:day) %>
-    <%= link_to t('calendar.week'), type_link_params(:week) %>
-    <%= link_to t('calendar.month'), type_link_params(:month) %>
-  </div>
-
-<%= calendar(@type, @date, @weekday) do |date| %>
-  <%= date.day %>
-  <% if @calendar.events_by_date(date) %>
-    <ul>
-     <% @calendar.events_by_date(date).each do |event| %>
-        <li><%= event.starts_at.strftime("%H:%M") %> <%= link_to event.title, calendar_event_path(@calendar, event) %></li>
-          <p><%= event.description %></p>
-      <% end %>
-    </ul>
-  <% end %>
-  <% end %>
 <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
 <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
-<p> Week starts on <%= params[:weekday] %></p>
 
-  <%= link_to t('events.new'), new_calendar_event_path(@calendar.token_write) %>
-
-  <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
-  <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
-
-
+<div id="calendarView"></div>
