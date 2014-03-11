@@ -13,8 +13,8 @@ class CalendarsController < ApplicationController
     @events = @calendar.events
     @type = params[:type] ? params[:type].to_sym : :month
     @date = params[:date] ? params[:date].to_date : Time.zone.today
-    @weekday = params[:weekday] ||=  "Monday"
-
+    @weekday = params[:weekday] ||= "Monday"
+debugger
   end
 
   def new

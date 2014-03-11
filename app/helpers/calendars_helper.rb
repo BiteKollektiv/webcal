@@ -28,7 +28,6 @@ module CalendarsHelper
 
   class CalendarTable < Struct.new(:view, :type, :date, :weekday, :callback)
     delegate :content_tag, to: :view
-
     def table
       content_tag :table, class: "calendar" do
         view_type(type)
@@ -36,21 +35,21 @@ module CalendarsHelper
     end
 
     def header(weekday)
-      week_starts_at(weekday)
+      week_starts_on(weekday)
       content_tag :tr do
         #      I18n.t('date.day_names', "Monday").map {|day| content_tag :th, day}.join.html_safe
         @weekdays.map {|day| content_tag :th, day[0]}.join.html_safe
       end
     end
 
-    def week_starts_at(weekday)
+    def week_starts_on(weekday)
       days_of_week = (0..6).map { |wday| [Date::DAYNAMES[wday], wday] }
       days_of_week.each do  |a|
         if a[0] == weekday
-          @starts_week_at = a[1].to_i 
+          @starts_week_on = a[1].to_i 
         end
       end
-      @weekdays = (@starts_week_at..6).map { |wday| [Date::DAYNAMES[wday], wday] } + (0..@starts_week_at-1).map { |wday| [Date::DAYNAMES[wday], wday] }
+      @weekdays = (@starts_week_on..6).map { |wday| [Date::DAYNAMES[wday], wday] } + (0..@starts_week_on-1).map { |wday| [Date::DAYNAMES[wday], wday] }
 
       return @weekdays
     end

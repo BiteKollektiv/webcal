@@ -11,6 +11,7 @@
     <%= file_field_tag 'ical' %>
     <%= submit_tag "Upload" %>
   <% end %>
+<% end %>
 
   <div id="calendar-nav">
     <%= link_to "<", direction_link_params(:back) %>
@@ -20,7 +21,8 @@
     <%= link_to t('calendar.month'), type_link_params(:month) %>
   </div>
 
-<%= calendar(@type, @date, @starts_week_on) do |date| %>
+<%= calendar(@type, @date, @weekday) do |date| %>
+
   <%= date.day %>
   <% if @calendar.events_by_date(date) %>
     <ul>
@@ -30,7 +32,7 @@
       <% end %>
     </ul>
   <% end %>
-
+  <% end %>
 <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
 <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
 <p> Week starts on <%= params[:weekday] %></p>
