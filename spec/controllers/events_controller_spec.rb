@@ -12,19 +12,35 @@ describe EventsController do
     end
   end
 
-  describe "POST create event" do
-    it "checks events create route" do
+  describe "GET new" do
+    it "checks Event's new route" do
+      calendar = Calendar.create! valid_calendar_attributes
+      calendar_id = calendar.token_read
+      assert_recognizes({ controller: 'events', action: 'new', calendar_id: calendar_id, locale: 'en'}, {path:"/en/calendars/#{calendar_id}/events/new", method: :get})
+    end
+  end
+
+  describe "POST create" do
+    it "checks Event's create route" do
       calendar = Calendar.create! valid_calendar_attributes
       calendar_id = calendar.token_read
       assert_recognizes({ controller: 'events', action: 'create', calendar_id: calendar_id, locale: 'en'}, {path:"/en/calendars/#{calendar_id}/events", method: :post})
     end
   end
 
-  describe "PUT update event" do
-    it "checks events update route" do
+  describe "GET edit" do
+    it "checks Event's edit route" do
       calendar = Calendar.create! valid_calendar_attributes
       calendar_id = calendar.token_read
-      assert_recognizes({ controller: 'events', action: 'update', calendar_id: calendar_id, locale: 'en', id: '1'}, {path:"/en/calendars/#{calendar_id}/events/1", method: :put})
+      assert_recognizes({ controller: 'events', action: 'edit', calendar_id: calendar_id, locale: 'en', id: '1'}, {path:"/en/calendars/#{calendar_id}/events/1/edit", method: :get})
+    end
+  end
+
+  describe "PATCH update" do
+    it "checks Event's update route" do
+      calendar = Calendar.create! valid_calendar_attributes
+      calendar_id = calendar.token_read
+      assert_recognizes({ controller: 'events', action: 'update', calendar_id: calendar_id, locale: 'en', id: '1'}, {path:"/en/calendars/#{calendar_id}/events/1", method: :patch})
     end
   end
 

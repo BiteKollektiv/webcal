@@ -22,7 +22,6 @@
   </div>
 
 <%= calendar(@type, @date, @weekday) do |date| %>
-
   <%= date.day %>
   <% if @calendar.events_by_date(date) %>
     <ul>
@@ -36,4 +35,10 @@
 <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
 <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
 <p> Week starts on <%= params[:weekday] %></p>
+
+  <%= link_to t('events.new'), new_calendar_event_path(@calendar.token_write) %>
+
+  <p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
+  <p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
+
 
