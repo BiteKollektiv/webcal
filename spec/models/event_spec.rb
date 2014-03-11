@@ -25,6 +25,8 @@ describe Event do
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:starts_at) }
   it { should validate_presence_of(:ends_at) }
+  it { should ensure_length_of(:title).is_at_least(2).is_at_most(140) }
+  it { should ensure_length_of(:description).is_at_least(10).is_at_most(3000) }
   it { should belong_to(:calendar) }
 
   # relation specs
