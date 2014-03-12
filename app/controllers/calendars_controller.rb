@@ -1,19 +1,15 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :edit, :update, :upload, :download, :destroy]
   include Uploader
+  respond_to :json, :html
 
   def show
-    if params[:id].size == 13
-      @calendar = Calendar.where(token_read: params[:id]).first
-      @calendar.writable = false
-    else
-      @calendar = Calendar.where(token_write: params[:id]).first
-      @calendar.writable = true
+    respond_with(@calendar) do |format|
+      format.html
+      format.json do
+        render json: @calendar.to_json(include: :events)
+      end
     end
-    @events = @calendar.events
-    @type = params[:type] ? params[:type].to_sym : :month
-    @date = params[:date] ? params[:date].to_date : Time.zone.today
-    @weekday = params[:weekday] ||= "Monday"
   end
 
   def new
@@ -66,7 +62,13 @@ class CalendarsController < ApplicationController
   private
 
     def set_calendar
-      @calendar = Calendar.find_by(token_write: params[:id])
+      if params[:id].size == 13
+        @calendar = Calendar.where(token_read: params[:id]).first
+        @calendar.writable = false
+      else
+        @calendar = Calendar.where(token_write: params[:id]).first
+        @calendar.writable = true
+      end
     end
 
     def calendar_params

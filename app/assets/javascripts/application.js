@@ -19,9 +19,9 @@
 //= require handlebars
 //= require handlebars.runtime
 //= require_tree ./templates
+//= require backbone/app
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views
-//= require backbone/app
 
 //= require_tree .
