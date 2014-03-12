@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :calendar do
     title "MyString"
-    description "MyString"
+    description "A longer calendar description"
 
     factory :calendar_with_events do
       after(:create) do |calendar|

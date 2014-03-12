@@ -30,6 +30,8 @@ describe Calendar do
 
   # Validation specs
   it { should callback(:generate_token).before(:validation) }
+  it { should ensure_length_of(:title).is_at_least(2).is_at_most(140) }
+  it { should ensure_length_of(:description).is_at_least(10).is_at_most(3000) }
   it { should have_many(:events) }
 
   it "sets the read and write tokens" do

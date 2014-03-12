@@ -2,6 +2,8 @@ class Calendar < ActiveRecord::Base
   include Tokenable
   validates :token_read, :token_write, presence: true, on: :create
   validates :token_read, :token_write, uniqueness: true, on: :create
+  validates :title, length: { in: 2..140 }, allow_blank: true
+  validates :description, length: { in: 10..3000 }, allow_blank: true
   has_many :events
   attr_accessor :writable
   alias :writable? :writable
