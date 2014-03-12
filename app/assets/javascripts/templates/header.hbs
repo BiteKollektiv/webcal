@@ -1,20 +1,15 @@
 <hgroup>
-	<h1>{{calendarTitle}}</h1>
-	<h2>{{calendarDescription}}</h2>
+  <h1>{{calendarTitle}}</h1>
+  <h2>{{calendarDescription}}</h2>
 </hgroup>
 <nav>
-	{{#if isEdit}}
-	<ul>
-		<li>create</li>
-		<li>Export</li>
-		<li>Share</li>
-	</ul>
-	{{else}}
-	<ul>
-		<li>create</li>
-		<li>Export</li>
-	</ul>
-	{{/if}}
+<ul>
+  <li>Create</li>
+  <li>Export</li>
+  {{#if isEdit}}
+    <li>Share</li>
+  {{/if}}
+</ul>
 </nav>
 
 <div class="clear"></div>
