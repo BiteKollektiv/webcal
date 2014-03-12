@@ -38,7 +38,6 @@ class CalendarsController < ApplicationController
   end
 
   def download
-    @calendar = Calendar.where(params[:token_read]) if not @calendar
     file = @calendar.to_ical
     send_file file, type: 'text/calendar'
   end
