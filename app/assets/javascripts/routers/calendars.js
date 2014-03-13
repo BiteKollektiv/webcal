@@ -4,21 +4,27 @@ WebcalApp.Routers.Calendars = Backbone.Router.extend({
   },
 
   routes: {
-    "show": "showCalendar",
+    "calendars/:token": "showCalendar",
     "": "newCalendar"
   },
 
+  initialize: function(options) {
+    this.events = new WebcalApp.Collections.Events();
+  },
+
   showCalendar: function(token) {
-    console.log(token);
-    eventsView = new WebcalApp.Views.EventsView({
+    calendarView = new WebcalApp.Views.CalendarView({
       el: $("#calendarView"),
       collection: events
     });
-    eventsView.render();
-    console.log(eventsView);
+    calendarView.render();
   },
 
   newCalendar: function() {
-    console.log("Create calendar function called");
+    createCalendarView = new WebcalApp.Views.CalendarsCreate({
+      el: $("#wrap"),
+      collection: this.events
+    });
+    createCalendarView.render();
   }
 });

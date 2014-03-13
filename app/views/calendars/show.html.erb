@@ -1,14 +1,3 @@
 <header></header>
 
-<% if @calendar.writable %>
-  <%= link_to 'Edit', @root %>
-  <%= form_tag({action: :upload}, multipart: true) do %>
-    <%= file_field_tag 'ical' %>
-    <%= submit_tag "Upload" %>
-  <% end %>
-<% end %>
-
-<p> Share your calendar => <a href="<%= @calendar.token_read %>">this url</a></p>
-<p> To create or modify events in your Calendar  => <a href="<%= @calendar.token_write %>">this url </a></p>
-
 <div id="calendarView"></div>

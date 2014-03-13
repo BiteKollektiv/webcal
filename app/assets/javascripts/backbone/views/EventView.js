@@ -1,5 +1,5 @@
-WebcalApp.Views.EventsView = Backbone.View.extend({
-  collection: events,
+WebcalApp.Views.CalendarView = Backbone.View.extend({
+  collection: WebcalApp.Collections.Events,
 
     initialize: function(){
       _.bindAll(this, 'addAll');
