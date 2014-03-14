@@ -15,6 +15,9 @@ deploy:
   provider: heroku
   api_key: "$HEROKU_API_KEY"
   run: RAILS_ENV=production rake db:migrate
+  app:
+    master: webcal-staging
+    production: webcal
 notifications:
   hipchat:
     rooms:
