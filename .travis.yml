@@ -23,4 +23,4 @@ notifications:
     rooms:
       secure: GVNlirt1qkVHo+RAvRSJPjUhm/Msa7bGeP9tqdl0L5woyZ/fRCqhSjN9EIyumK5PuIR9+2t1rzCbeEOoCAX1hz+SKmC/SvaNk5X1WX4fs0bL3KO3V96ME1AIEYxJ56Fs8z8+GGD/ONo9C5ZVpNmJlrUyxOxmBHS9boe0tQzi+qY=
     template:
-      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message} Build details: %{build_url}'
