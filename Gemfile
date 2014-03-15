@@ -44,6 +44,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # run bundle exec rake doc:rails to generate api doc at doc/api
 group :doc do
   gem 'sdoc', require: false
