@@ -57,9 +57,7 @@ describe CalendarsController do
       get :download, id: calendar.token_write
       expect(response.status).to be 200
     end
-  end
 
-  describe "Calendar export" do
     it "deletes the exported file after download" do
       def count_files
         Dir.glob(
