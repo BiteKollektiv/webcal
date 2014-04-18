@@ -1,6 +1,4 @@
-var Events = Backbone.Collection.extend({
-	model: Event,
-	url: "events"
+WebcalApp.Collections.Events = Backbone.Collection.extend({
+  model: WebcalApp.Models.Event,
+  url: "events"
 });
-
-var events = new Events();

@@ -1,1 +1,1 @@
-var Event = Backbone.Model.extend();
+WebcalApp.Models.Event = Backbone.Model.extend();
